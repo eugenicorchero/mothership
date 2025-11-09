@@ -2671,12 +2671,9 @@
             updateInventoryCounters();
             
             // Mostrar información de datos cargados si existen
-            const hasData = crewDatabase.length > 0 || inventoryDatabase.length > 0 || Object.keys(CONTRACT_DATA).length > 4;
-            if (hasData) {
-                setTimeout(() => {
-                    showNotification('Datos previos cargados desde el almacenamiento local', 'success');
-                }, 2000);
-            }
+            setTimeout(() => {
+                showStorageStatus();
+            }, 2000);
             
             // Agregar efectos de parpadeo aleatorio
             setInterval(() => {
