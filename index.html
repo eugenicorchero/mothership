@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mothership - Módulo de Operaciones</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Fuente Retro (VT323) -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos base para el efecto terminal, ajustados a la estética Mothership */
+        :root {
+            --terminal-color: #00ff66; /* Neon Green */
+            --terminal-accent: #ffb86c; /* Amber/Orange for alerts and titles */
+            --bg-color: #1a1e24; /* Very Dark Blue/Grey */
+            --dark-border: #008833; /* Darker Green for inner borders */
+            --error-color: #ff3333; /* Red for errors */
+        }
+        body {
+            font-family: 'VT323', monospace;
+            background-color: var(--bg-color);
+            color: var(--terminal-color);
+            overflow: hidden; 
+        }
+
+        /* Estilo general de la aplicación */
+        #app-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            border: 4px solid var(--terminal-color);
+            box-shadow: 0 0 15px var(--terminal-color), inset 0 0 10px var(--terminal-color);
+            background-color: #000000; /* Fondo negro puro dentro del marco */
+        }
+
+        /* Efecto de Flicker (parpadeo sutil) */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.8; }
+        }
+        .flicker {
+            animation: flicker 0.15s infinite alternate;
+        }
+
+        /* Efecto Scanlines (líneas de CRT) */
+        #app-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2) 0px,
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        /* Estilo de los enlaces de navegación con corchetes (como en las imágenes) */
+        .nav-link {
+            padding: 0.5rem 0.75rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            color: var(--terminal-color);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            display: inline-block;
+        }
+        .nav-link:hover {
+            color: var(--terminal-accent);
+            border-bottom-color: var(--terminal-accent);
+        }
+        .nav-link.active {
+            border-bottom-color: var(--terminal-color);
+            color: white; /* Resalta el link activo */
+        }
+
+        /* Personalización de botones y enlaces */
+        .terminal-btn {
+            background-color: transparent;
+            border: 2px solid var(--terminal-color);
+            color: var(--terminal-color);
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.1s;
+            text-shadow: 0 0 8px var(--terminal-color);
+            /* Asegura que el texto esté centrado si el padding es asimétrico */
+            text-align: center; 
+        }
+
+        .terminal-btn:hover {
+            background-color: var(--terminal-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--terminal-color);
+        }
+
+        /* Estilo para tarjetas (Contratos y Base de Datos) */
+        .data-card {
+            border: 1px solid var(--dark-border);
+            padding: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .data-card:hover {
+            border-color: var(--terminal-color);
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+        
+        /* Estilo del input de terminal */
+        .terminal-input {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: black;
+            border: 1px solid var(--terminal-color);
+            color: var(--terminal-accent);
+            outline: none;
+        }
+
+        /* Estilo específico para el botón de rechazo/error */
+        .btn-reject {
+            border-color: var(--error-color) !important;
+            color: var(--error-color) !important;
+            text-shadow: 0 0 8px var(--error-color);
+        }
+        .btn-reject:hover {
+            background-color: var(--error-color) !important;
+            color: var(--bg-color) !important;
+            box-shadow: 0 0 20px var(--error-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de inicio (Boot) -->
+    <div id="boot-screen" class="absolute inset-0 flex flex-col items-center justify-center bg-black transition-opacity duration-1000">
+        <!-- ASCII Art MOTHERSHIP mejorado (más denso y legible) -->
+        <pre class="text-xs sm:text-lg md:text-xl text-terminal-color flicker animate-pulse p-4 overflow-x-auto whitespace-pre leading-none">
+        // M O T H E R S H I P    C E N T R A L    S Y S T E M
+        
+        ░█████╗░██████╗░████████╗██╗░░░██╗███████╗██████╗░░█████╗░████████╗
+        ██╔══██╗██╔══██╗╚══██╔══╝██║░░░██║██╔════╝██╔══██╗██╔══██╗╚══██╔══╝
+        ██║░░██║██████╔╝░░░██║░░░██║░░░██║█████╗░░██████╔╝██║░░██║░░░██║░░░
+        ██║░░██║██╔══██╗░░░██║░░░██║░░░██║██╔══╝░░██╔══██╗██║░░██║░░░██║░░░
+        ╚█████╔╝██║░░██║░░░██║░░░╚██████╔╝███████╗██║░░██║╚█████╔╝░░░██║░░░
+        ░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░
+        
+        [ M A I N   C O M M A N D   S Y S T E M   -   S E C U R E ]
+        
+        </pre>
+        <p class="text-lg md:text-2xl mt-8 mb-4 text-terminal-accent flicker">> ESTABLECIENDO CONEXIÓN SEGURA. INGRESE AL PUENTE DE MANDO.</p>
+        <button id="enter-btn" class="terminal-btn mt-10 text-xl md:text-3xl">ACCESO AL PUENTE [ CONNECT ]</button>
+    </div>
+
+    <!-- Contenedor Principal de la SPA (Inicialmente oculto) -->
+    <div id="app-container" class="hidden relative flex flex-col">
+        <!-- Encabezado y Navegación Horizontal (Mothership Command System) -->
+        <header class="p-4 border-b border-dark-border flex-shrink-0">
+            <h1 class="text-2xl text-white mb-2">Mothership Command System</h1>
+            <nav id="top-nav" class="text-sm">
+                <!-- Los botones de navegación ahora son enlaces con corchetes -->
+                <a class="nav-link active" data-screen="landing">[ MANDATOS ]</a>
+                <a class="nav-link" data-screen="contratos">[ CONTRATOS ]</a>
+                <a class="nav-link" data-screen="database">[ BASE DE DATOS ]</a>
+                <a class="nav-link" data-screen="terminal">[ TERMINAL ACCESS ]</a>
+            </nav>
+        </header>
+
+        <!-- Área de Contenido Principal -->
+        <main id="content-area" class="flex-grow overflow-y-auto p-4">
+            <!-- PÁGINA 1: LANDING PAGE -->
+            <section id="landing" class="screen">
+                <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// MOTHERSHIP COMMAND: UNIDAD M-05 INTRANET</p>
+                <h2 class="text-4xl my-4 text-terminal-accent">MÓDULO DE RECLUTAMIENTO ACTIVO</h2>
+                <div class="p-4 border-2 border-dark-border bg-black shadow-lg shadow-green-700/10">
+                    <p class="text-xl mb-4 text-terminal-color">> BIENVENIDO, CONTRATISTA. (FECHA ESTELAR: 2247.03.18)</p>
+                    <p class="mb-4 text-sm">
+                        Este portal seguro proporciona acceso a una lista de oportunidades para contratistas independientes. El MOTHERSHIP Command System está comprometido con la "Construcción de Mundos Mejores", y el progreso a menudo requiere la experiencia de especialistas dispuestos a operar en entornos de alto riesgo y fronteras inexploradas. Su éxito es nuestro éxito.
+                    </p>
+                    <p class="mb-4 text-sm text-terminal-accent">
+                        **ADVERTENCIA:** El MOTHERSHIP Command System no se hace responsable por lesiones, muerte o trauma psicológico incurrido durante la ejecución del contrato. Familiarícese con los protocolos de la Base de Datos antes de proceder.
+                    </p>
+                    <p class="text-sm text-right mt-6 text-gray-500">_Fin del registro. El universo es vasto. La rentabilidad es la única ley._</p>
+                </div>
+            </section>
+
+            <!-- PÁGINA 2: CONTRATOS -->
+            <section id="contratos" class="screen hidden">
+                <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// CONTRATOS ACTIVOS</p>
+                <h2 class="text-4xl my-4 text-terminal-accent">LISTADO DE ASIGNACIONES (Q3-2247)</h2>
+                <div id="contract-list" class="space-y-4">
+                    <!-- Clientes actualizados a Mothership Command -->
+                    <div class="contract-item data-card" data-id="1">
+                        <p class="text-2xl text-terminal-accent">Contrato: Recuperación en Sector A-71</p>
+                        <p class="text-sm">CLIENTE: Mothership Command | PAGO: <span class="text-terminal-color">30.000 Créditos</span> | TIPO: Salvamento</p>
+                        <p class="mt-2 text-xs text-gray-400">-> MÁS DETALLES</p>
+                    </div>
+                    <div class="contract-item data-card" data-id="2">
+                        <p class="text-2xl text-terminal-accent">Contrato: Mantenimiento Estación "Deep Drifter"</p>
+                        <p class="text-sm">CLIENTE: Geoman Corp. | PAGO: <span class="text-terminal-color">15.000 Créditos</span> | TIPO: Mantenimiento</p>
+                        <p class="mt-2 text-xs text-gray-400">-> MÁS DETALLES</p>
+                    </div>
+                    <div class="contract-item data-card" data-id="3">
+                        <p class="text-2xl text-terminal-accent">Contrato: Patrulla de Seguridad 'Titan'</p>
+                        <p class="text-sm">CLIENTE: U.S. Colonial Admin. | PAGO: <span class="text-terminal-color">22.000 Créditos</span> | TIPO: Seguridad</p>
+                        <p class="mt-2 text-xs text-gray-400">-> MÁS DETALLES</p>
+                    </div>
+                    <div class="contract-item data-card" data-id="4">
+                        <p class="text-2xl text-terminal-accent">Contrato: Desmantelamiento Plataforma 'Scythe'</p>
+                        <p class="text-sm">CLIENTE: Mothership Command - Riesgos | PAGO: <span class="text-terminal-color">45.000 Créditos</span> | TIPO: Eliminación</p>
+                        <p class="mt-2 text-xs text-gray-400">-> MÁS DETALLES</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PÁGINA 3: BASE DE DATOS -->
+            <section id="database" class="screen hidden">
+                <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// PROTOCOLOS CORPORATIVOS</p>
+                <h2 class="text-4xl my-4 text-terminal-accent">RECURSOS DE SUPERVIVENCIA Y REFERENCIA</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Tarjeta 1 -->
+                    <a href="https://example.com/guia.pdf" target="_blank" class="data-card block hover:bg-green-900/20">
+                        <p class="text-xl text-terminal-color">[ PDF ] Guía de Supervivencia</p>
+                        <p class="text-sm mt-2">El manual oficial para contratistas. Lectura esencial.</p>
+                        <p class="text-xs mt-2 text-gray-400">-> REFERENCIA RÁPIDA</p>
+                    </a>
+                    <!-- Tarjeta 2 -->
+                    <a href="#" class="data-card block hover:bg-green-900/20">
+                        <p class="text-xl text-terminal-color">[ CHEAT ] Cheatsheet de Mecánicas</p>
+                        <p class="text-sm mt-2">Referencia concisa para tiradas de combate, pánico y estrés.</p>
+                        <p class="text-xs mt-2 text-gray-400">-> DESCARGAR</p>
+                    </a>
+                    <!-- Tarjeta 3 -->
+                    <a href="https://example.com/companion" target="_blank" class="data-card block hover:bg-green-900/20">
+                        <p class="text-xl text-terminal-color">[ APP ] Companion App V2.0</p>
+                        <p class="text-sm mt-2">Herramienta web para gestión de personajes y equipo.</p>
+                        <p class="text-xs mt-2 text-gray-400">-> ACCESO EXTERNO</p>
+                    </a>
+                    <!-- Tarjeta 4 -->
+                    <a href="https://youtube.com/tutorial" target="_blank" class="data-card block hover:bg-green-900/20">
+                        <p class="text-xl text-terminal-color">[ VIDEO ] Tutorial Operacional</p>
+                        <p class="text-sm mt-2">Instrucciones visuales sobre la mecánica de Estrés y Pánico.</p>
+                        <p class="text-xs mt-2 text-gray-400">-> TRANSMISIÓN EN VIVO</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- PÁGINA 4: TERMINAL RESTRINGIDO -->
+            <section id="terminal" class="screen hidden">
+                <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// ACCESO DE NIVEL 4</p>
+                <h2 class="text-4xl my-4 text-terminal-accent">TERMINAL DE INTEL CRÍTICO</h2>
+
+                <div id="login-form" class="max-w-md mx-auto p-8 border-2 border-terminal-color shadow-lg shadow-terminal-color/30">
+                    <p class="mb-4 text-lg text-terminal-color text-center">MOTHERSHIP SECURE ACCESS</p>
+                    <p class="mb-4 text-sm text-terminal-accent text-center">INGRESE CÓDIGO DE ACCESO DE CONTRATO:</p>
+                    <input type="password" id="password-input" class="terminal-input mb-4" placeholder="[ ENTER ACCESS CODE ]">
+                    <button id="login-btn" class="terminal-btn w-full mt-2 text-terminal-accent border-terminal-accent hover:bg-terminal-accent hover:text-black">DESBLOQUEAR [ CONNECT ]</button>
+                    <p id="login-message" class="mt-4 text-sm text-center"></p>
+                </div>
+
+                <!-- Contenido Restringido (Inicialmente oculto) -->
+                <div id="restricted-content" class="mt-8 hidden p-6 border-2 border-red-500 shadow-lg shadow-red-700/50">
+                    <p class="text-2xl mb-4 text-red-500">ADVERTENCIA: ARCHIVO: R-44/REAPER</p>
+                    <p class="mb-4 text-sm text-terminal-color">
+                        <span class="text-terminal-accent">MAPA:</span> Acceso a los planos del complejo de minería 'Scythe' [ <a href="#" class="underline hover:text-white">VER ESQUEMAS</a> ]
+                    </p>
+                    <p class="mb-4 text-sm text-terminal-color">
+                        <span class="text-terminal-accent">INTEL:</span> La tripulación reportó "presencias biológicas no identificadas". El protocolo es <span class="text-red-500 font-bold">INCINERAR TODO</span>. No hay lugar para rescates.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-4">_Registro de acceso de terminal: 005-M_</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL DE CONTRATO (Superposición) -->
+    <div id="contract-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+        <!-- Contenedor del Modal con borde ÁMBAR -->
+        <div class="p-8 w-11/12 md:w-2/3 max-h-[90vh] overflow-y-auto bg-black border-4 border-terminal-accent shadow-xl shadow-terminal-accent/50">
+            <h3 id="modal-title" class="text-3xl mb-4 text-terminal-accent border-b border-dark-border pb-2"></h3>
+            <p id="modal-details" class="mb-6 text-sm"></p>
+
+            <!-- Revelación de Contraseña con borde ÁMBAR -->
+            <div id="password-reveal" class="hidden p-4 bg-black border border-terminal-accent mb-6">
+                <p class="text-lg text-terminal-color">CONTRATO ACEPTADO. SU CÓDIGO DE ACCESO A TERMINAL ES:</p>
+                <!-- Clave en color ÁMBAR brillante -->
+                <p id="contract-password" class="text-5xl text-terminal-accent font-bold my-4 flicker">MANTIS-77</p>
+                <p class="text-sm text-terminal-color">Use este código en el portal [ TERMINAL ACCESS ].</p>
+            </div>
+
+            <div class="flex justify-between space-x-4 pt-4 border-t border-dark-border">
+                <!-- Se agregó la clase btn-reject para el botón de rechazar -->
+                <button id="reject-contract-btn" class="terminal-btn btn-reject">RECHAZAR / DECLINE</button>
+                <button id="accept-contract-btn" class="terminal-btn">ACEPTAR / ACCEPT</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONSTANTES Y ESTADO ---
+        const SCREENS = document.querySelectorAll('.screen');
+        const NAV_LINKS = document.querySelectorAll('.nav-link'); // Usar .nav-link ahora
+        const BOOT_SCREEN = document.getElementById('boot-screen');
+        const APP_CONTAINER = document.getElementById('app-container');
+        const ENTER_BTN = document.getElementById('enter-btn');
+        const CONTRACT_ITEMS = document.querySelectorAll('.contract-item');
+        const CONTRACT_MODAL = document.getElementById('contract-modal');
+        const ACCEPT_CONTRACT_BTN = document.getElementById('accept-contract-btn');
+        const REJECT_CONTRACT_BTN = document.getElementById('reject-contract-btn');
+        const PASSWORD_REVEAL = document.getElementById('password-reveal');
+        const MODAL_TITLE = document.getElementById('modal-title');
+        const MODAL_DETAILS = document.getElementById('modal-details');
+
+        const PASSWORD_INPUT = document.getElementById('password-input');
+        const LOGIN_BTN = document.getElementById('login-btn');
+        const LOGIN_MESSAGE = document.getElementById('login-message');
+        const RESTRICTED_CONTENT = document.getElementById('restricted-content');
+
+        const HARDCODED_PASSWORD = 'MANTIS-77';
+
+        // --- DATOS DE CONTRATOS (Placeholder JSON) ---
+        const CONTRACT_DATA = {
+            '1': { 
+                title: 'Salvage Operation: "The Prospero"', 
+                details: 'El carguero Conestoga-class, "The Prospero", ha desaparecido en el sistema Zeta-2 Reticuli. Los escaneos iniciales muestran que la nave está intacta pero sin energía. Se requiere un equipo de salvamento para investigar, restaurar la energía si es posible, y recuperar el registro de la nave y cualquier carga valiosa.',
+                reward: 'Pago: Variable, basado en activos recuperados',
+                region: 'Cliente: Mothership Command | Tipo: Salvamento',
+                type: 'Oneshot'
+            },
+            '2': { 
+                title: 'Medical Emergency: Sevastopol Station', 
+                details: 'Se recibió una S.O.S. desde la cubierta médica de Sevastopol Station antes de que las comunicaciones se interrumpieran. Se requiere un equipo especialista para investigar la naturaleza de la emergencia médica y prestar ayuda.',
+                reward: 'Pago: 15.000 Créditos (Por hora de contacto con vida)',
+                region: 'Cliente: Geoman Corp. | Tipo: Mantenimiento/Médica',
+                type: 'Campaña 3 Sesiones'
+            },
+            '3': { 
+                title: 'Extermination: Fiorina "Fury" 161', 
+                details: 'La instalación penitenciaria abandonada Fiorina en Fury 161 necesita ser despejada para su desmantelamiento. Los informes indican una infestación persistente. Los protocolos estándar de "control de plagas" están en vigor. Se requiere la eliminación de toda la vida biológica no autorizada.',
+                reward: 'Pago: 22.000 Créditos (Prima de riesgo incluida)',
+                region: 'Cliente: U.S. Colonial Admin. | Tipo: Seguridad/Eliminación',
+                type: 'Oneshot'
+            },
+            '4': { 
+                title: 'Desmantelamiento Plataforma 'Scythe'', 
+                details: 'La plataforma minera 'Scythe' está abandonada y debe ser desmantelada remotamente. Se requiere un equipo en tierra para instalar explosivos. Se reportaron rumores de una "infección". Mothership Command niega cualquier riesgo biológico.',
+                reward: 'Pago: 45.000 Créditos',
+                region: 'Cliente: Mothership Command - Riesgos | Tipo: Eliminación (Alto Riesgo)',
+                type: 'Campaña Abierta'
+            }
+        };
+
+        let selectedContractId = null;
+
+        // --- FUNCIONES DE NAVEGACIÓN ---
+
+        // Función para cambiar la pantalla activa
+        function showScreen(targetId) {
+            SCREENS.forEach(screen => {
+                screen.classList.add('hidden');
+                if (screen.id === targetId) {
+                    screen.classList.remove('hidden');
+                }
+            });
+            // Resaltar el enlace de navegación activo
+            NAV_LINKS.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.screen === targetId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // --- EVENT HANDLERS ---
+
+        // 1. Manejar la pantalla de arranque
+        ENTER_BTN.addEventListener('click', () => {
+            // Inicia la transición de opacidad
+            BOOT_SCREEN.classList.add('opacity-0');
+            
+            // Oculta completamente y muestra el contenedor principal después de la transición
+            setTimeout(() => {
+                BOOT_SCREEN.classList.add('hidden');
+                APP_CONTAINER.classList.remove('hidden');
+                // Inicializar en la landing page
+                showScreen('landing');
+            }, 1000); // 1000ms = duración de la transición CSS
+        });
+
+        // 2. Manejar la navegación principal (usando .nav-link)
+        NAV_LINKS.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Previene que el navegador siga el href="#" si estuviera presente
+                e.preventDefault(); 
+                const target = e.target.dataset.screen;
+                if (target) {
+                    showScreen(target);
+                }
+            });
+        });
+
+        // 3. Manejar clics en contratos para abrir el modal
+        CONTRACT_ITEMS.forEach(item => {
+            item.addEventListener('click', (e) => {
+                let id = e.currentTarget.dataset.id;
+                selectedContractId = id;
+                const data = CONTRACT_DATA[id];
+
+                // Rellenar el modal
+                MODAL_TITLE.textContent = data.title;
+                // Usar innerHTML para interpretar los tags <p> en los detalles
+                MODAL_DETAILS.innerHTML = `
+                    <p class="text-terminal-accent mb-2">${data.reward}</p>
+                    <p class="text-terminal-color mb-4">${data.region}</p>
+                    <div class="border-t border-b border-dark-border py-4">${data.details}</div>
+                `;
+
+                // Resetear estado del modal
+                PASSWORD_REVEAL.classList.add('hidden');
+                ACCEPT_CONTRACT_BTN.classList.remove('hidden');
+                // Asegurar que el botón de rechazar esté visible
+                REJECT_CONTRACT_BTN.classList.remove('hidden');
+
+                // Mostrar modal
+                CONTRACT_MODAL.classList.remove('hidden');
+            });
+        });
+
+        // 4. Manejar botón "Aceptar Contrato"
+        ACCEPT_CONTRACT_BTN.addEventListener('click', () => {
+            PASSWORD_REVEAL.classList.remove('hidden');
+            ACCEPT_CONTRACT_BTN.classList.add('hidden');
+            REJECT_CONTRACT_BTN.textContent = 'CERRAR / CLOSE';
+            REJECT_CONTRACT_BTN.classList.remove('btn-reject');
+            REJECT_CONTRACT_BTN.classList.add('terminal-btn'); // Restaura el estilo
+        });
+
+        // 5. Manejar botón "Rechazar/Cerrar"
+        REJECT_CONTRACT_BTN.addEventListener('click', () => {
+            CONTRACT_MODAL.classList.add('hidden');
+            // Restablecer el texto y el estilo del botón por si se usó como botón de cerrar
+            REJECT_CONTRACT_BTN.textContent = 'RECHAZAR / DECLINE';
+            REJECT_CONTRACT_BTN.classList.add('btn-reject');
+        });
+
+        // 6. Manejar el login del Terminal Restringido
+        LOGIN_BTN.addEventListener('click', () => {
+            const enteredPassword = PASSWORD_INPUT.value.toUpperCase().trim();
+            
+            // Limpiar y resetear el estilo del mensaje
+            LOGIN_MESSAGE.textContent = '';
+            LOGIN_MESSAGE.classList.remove('text-terminal-color', 'text-red-500', 'flicker');
+
+            if (enteredPassword === HARDCODED_PASSWORD) {
+                LOGIN_MESSAGE.textContent = 'ACCESO CONCEDIDO. CARGANDO INTEL CLASIFICADO...';
+                LOGIN_MESSAGE.classList.add('text-terminal-color', 'flicker');
+                RESTRICTED_CONTENT.classList.remove('hidden');
+            } else {
+                LOGIN_MESSAGE.textContent = 'ERROR. CÓDIGO INVÁLIDO. REINTENTE. [ PROTOCOL 3 ENGAGED ]';
+                LOGIN_MESSAGE.classList.add('text-red-500', 'flicker');
+                RESTRICTED_CONTENT.classList.add('hidden');
+            }
+            PASSWORD_INPUT.value = ''; // Limpiar campo
+        });
+
+        // 7. Permitir 'Enter' en el input para el login
+        PASSWORD_INPUT.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                LOGIN_BTN.click();
+            }
+        });
+
+        // 8. Inicializar la aplicación al cargar la ventana
+        window.onload = () => {
+            showScreen('landing');
+        };
+    </script>
+</body>
+</html>
