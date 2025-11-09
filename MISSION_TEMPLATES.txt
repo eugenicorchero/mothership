@@ -1,0 +1,222 @@
+# PLANTILLAS DE MISIONES PARA MOTHERSHIP RPG
+# ============================================
+
+## PLANTILLA 1: MISIÓN DE RESCATE
+```javascript
+'rescue_template': {
+    title: 'BRIEFING XXXXXX: Operation Lifeline',
+    client: 'Colonial Administration',
+    details: `
+        <div class="space-y-4">
+            <div class="border border-terminal-accent p-3 bg-black/50">
+                <p class="text-terminal-accent font-bold mb-2">SITUACIÓN:</p>
+                <p class="text-sm">Una estación de investigación ha perdido contacto. Se detectan señales de vida débiles. Tiempo crítico para operación de rescate.</p>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">OBJETIVOS PRINCIPALES:</p>
+                <ul class="text-sm space-y-1">
+                    <li>• Localizar supervivientes en la estación</li>
+                    <li>• Estabilizar a personal herido</li>
+                    <li>• Evacuar a todos los supervivientes</li>
+                    <li>• Recuperar datos críticos de la estación</li>
+                </ul>
+            </div>
+            <div class="border border-error-color p-3 bg-red-900/10">
+                <p class="text-error-color font-bold mb-2">⏰ FACTOR TIEMPO:</p>
+                <p class="text-xs">Suministros de supervivientes limitados. Ventana de rescate: 6-8 horas máximo.</p>
+            </div>
+        </div>
+    `,
+    reward: '18,000₡ + 2,000₡ por superviviente',
+    region: 'Estación: [NOMBRE] | Supervivientes: [X] confirmados',
+    type: 'Rescate - Emergencia Médica',
+    description: 'Operación de rescate urgente en estación con comunicaciones cortadas',
+    location: '[ESTACIÓN DE INVESTIGACIÓN]',
+    risk: 'ALTO'
+}
+```
+
+## PLANTILLA 2: MISIÓN DE EXPLORACIÓN
+```javascript
+'exploration_template': {
+    title: 'BRIEFING XXXXXX: Deep Survey Operation',
+    client: 'Mothership Survey Division',
+    details: `
+        <div class="space-y-4">
+            <div class="border border-terminal-accent p-3 bg-black/50">
+                <p class="text-terminal-accent font-bold mb-2">SITUACIÓN:</p>
+                <p class="text-sm">Planeta recién descubierto muestra signos de actividad inusual. Se requiere equipo de exploración para evaluación preliminar y establecimiento de protocolos.</p>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">OBJETIVOS PRINCIPALES:</p>
+                <ul class="text-sm space-y-1">
+                    <li>• Realizar cartografía básica del área asignada</li>
+                    <li>• Tomar muestras atmosféricas y del suelo</li>
+                    <li>• Documentar flora y fauna nativas</li>
+                    <li>• Establecer beacon de navegación</li>
+                    <li>• Evaluar potencial de colonización</li>
+                </ul>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">EQUIPO ESPECIALIZADO:</p>
+                <p class="text-sm">Kit de análisis atmosférico, contenedores de muestras estériles, generador de beacon, cámaras de documentación</p>
+            </div>
+        </div>
+    `,
+    reward: '25,000₡ + bonos por descubrimientos',
+    region: 'Planeta: [DESIGNACIÓN] | Tipo: [Terrestre/Oceanico/etc]',
+    type: 'Exploración - Investigación Científica',
+    description: 'Misión de exploración y cartografía en planeta no catalogado',
+    location: '[PLANETA DESIGNACIÓN]',
+    risk: 'MEDIO'
+}
+```
+
+## PLANTILLA 3: MISIÓN DE SEGURIDAD/COMBATE
+```javascript
+'security_template': {
+    title: 'BRIEFING XXXXXX: Hostile Elimination',
+    client: 'Corporate Security Division',
+    details: `
+        <div class="space-y-4">
+            <div class="border border-terminal-accent p-3 bg-black/50">
+                <p class="text-terminal-accent font-bold mb-2">SITUACIÓN:</p>
+                <p class="text-sm">Instalación corporativa ha sido comprometida por elementos hostiles. Se requiere intervención armada para recuperar el control y asegurar activos valiosos.</p>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">OBJETIVOS PRINCIPALES:</p>
+                <ul class="text-sm space-y-1">
+                    <li>• Neutralizar amenazas hostiles en la instalación</li>
+                    <li>• Asegurar áreas críticas (reactor, laboratorios, armería)</li>
+                    <li>• Recuperar personal ejecutivo si está vivo</li>
+                    <li>• Proteger equipamiento de alto valor</li>
+                </ul>
+            </div>
+            <div class="border border-error-color p-3 bg-red-900/10">
+                <p class="text-error-color font-bold mb-2">⚠️ NIVEL DE AMENAZA:</p>
+                <p class="text-xs">Hostiles armados confirmados. Autorizado uso de fuerza letal. Protocolos de fuego real en efecto.</p>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">ARMAMENTO PROPORCIONADO:</p>
+                <p class="text-sm">Pulse Rifles, granadas de fragmentación, armadura corporal clase-IV, kit médico de combate</p>
+            </div>
+        </div>
+    `,
+    reward: '35,000₡ + prima de riesgo + bonus por objetivos',
+    region: 'Instalación: [COMPLEJO] | Hostiles: [NÚMERO] estimados',
+    type: 'Seguridad - Eliminación de Amenaza',
+    description: 'Operación armada para recuperar instalación comprometida',
+    location: '[COMPLEJO/INSTALACIÓN]',
+    risk: 'EXTREMO'
+}
+```
+
+## PLANTILLA 4: MISIÓN DE INVESTIGACIÓN/MISTERIO
+```javascript
+'investigation_template': {
+    title: 'BRIEFING XXXXXX: Anomaly Investigation',
+    client: 'Mothership Research Division',
+    details: `
+        <div class="space-y-4">
+            <div class="border border-terminal-accent p-3 bg-black/50">
+                <p class="text-terminal-accent font-bold mb-2">SITUACIÓN:</p>
+                <p class="text-sm">Se han detectado anomalías inexplicables en [UBICACIÓN]. Los equipos previos han reportado eventos inusuales antes de perder contacto. Investigación requerida.</p>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">OBJETIVOS PRINCIPALES:</p>
+                <ul class="text-sm space-y-1">
+                    <li>• Investigar la naturaleza de las anomalías reportadas</li>
+                    <li>• Localizar equipo de investigación previo</li>
+                    <li>• Recopilar datos sobre los fenómenos observados</li>
+                    <li>• Determinar si el área es segura para operaciones futuras</li>
+                </ul>
+            </div>
+            <div class="border border-terminal-color p-3 bg-gray-900/30">
+                <p class="text-terminal-accent font-bold mb-2">📋 REPORTES PREVIOS:</p>
+                <div class="text-xs space-y-1">
+                    <p><strong>Equipo Alpha:</strong> "Lecturas electromagnéticas anómalas"</p>
+                    <p><strong>Equipo Beta:</strong> "Distorsiones visuales confirmadas"</p>
+                    <p><strong>Dr. [NOMBRE]:</strong> "Los instrumentos no funcionan correctamente aquí"</p>
+                </div>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">EQUIPO CIENTÍFICO:</p>
+                <p class="text-sm">Sensores avanzados, registradores de datos, kit de análisis, respaldo de comunicaciones</p>
+            </div>
+        </div>
+    `,
+    reward: '20,000₡ + bonus por datos recuperados',
+    region: 'Zona: [DESIGNACIÓN] | Anomalías: [TIPO] confirmadas',
+    type: 'Investigación - Fenómenos Anómalos',
+    description: 'Investigación de anomalías inexplicables y equipos desaparecidos',
+    location: '[ZONA DE ANOMALÍAS]',
+    risk: 'ALTO'
+}
+```
+
+## PLANTILLA 5: MISIÓN DE TRANSPORTE/ESCORT
+```javascript
+'transport_template': {
+    title: 'BRIEFING XXXXXX: VIP Transport',
+    client: 'Executive Protection Services',
+    details: `
+        <div class="space-y-4">
+            <div class="border border-terminal-accent p-3 bg-black/50">
+                <p class="text-terminal-accent font-bold mb-2">SITUACIÓN:</p>
+                <p class="text-sm">Personal de alto nivel requiere transporte seguro a través de territorio hostil. La discreción y protección del objetivo son prioritarias.</p>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">OBJETIVOS PRINCIPALES:</p>
+                <ul class="text-sm space-y-1">
+                    <li>• Proteger al VIP durante todo el trayecto</li>
+                    <li>• Mantener comunicaciones seguras</li>
+                    <li>• Evitar detección por elementos hostiles</li>
+                    <li>• Entregar al VIP en destino sin incidentes</li>
+                </ul>
+            </div>
+            <div class="border border-terminal-color p-3 bg-gray-900/30">
+                <p class="text-terminal-accent font-bold mb-2">🎯 INFORMACIÓN DEL VIP:</p>
+                <div class="text-xs space-y-1">
+                    <p><strong>Identidad:</strong> [CLASIFICADO - Nivel ejecutivo]</p>
+                    <p><strong>Valor:</strong> Conocimiento crítico de operaciones corporativas</p>
+                    <p><strong>Amenazas:</strong> Múltiples facciones interesadas en captura</p>
+                </div>
+            </div>
+            <div class="border border-terminal-color p-3">
+                <p class="text-terminal-accent font-bold mb-2">RUTA Y PROTOCOLO:</p>
+                <p class="text-sm">Ruta pre-planificada, puntos de extracción de emergencia, códigos de autenticación actualizados cada 4 horas</p>
+            </div>
+        </div>
+    `,
+    reward: '30,000₡ + bonus por entrega exitosa',
+    region: 'Ruta: [ORIGEN] → [DESTINO] | Distancia: [XXX] km',
+    type: 'Escolta - Transporte Seguro',
+    description: 'Misión de protección y transporte de personal de alto valor',
+    location: '[RUTA DESIGNADA]',
+    risk: 'ALTO'
+}
+```
+
+## CÓMO PERSONALIZAR LAS PLANTILLAS:
+
+1. **Copiar la plantilla** que mejor se adapte a tu misión
+2. **Reemplazar los marcadores** entre [corchetes] con información específica
+3. **Ajustar el riesgo** según la dificultad deseada
+4. **Modificar la compensación** según la importancia de la misión
+5. **Añadir detalles específicos** en las secciones según sea necesario
+
+## MARCADORES COMUNES PARA REEMPLAZAR:
+- [NOMBRE]: Nombres de personas, lugares, naves
+- [DESIGNACIÓN]: Códigos de planetas, estaciones, operaciones  
+- [UBICACIÓN]: Lugares específicos donde ocurre la acción
+- [NÚMERO]: Cantidades de personal, recursos, tiempo
+- [TIPO]: Categorías específicas (terrestre, orbital, etc.)
+- [XXX]: Datos variables (distancias, códigos, etc.)
+
+## NIVELES DE RIESGO RECOMENDADOS:
+- **BAJO**: Misiones de rutina, transporte seguro, investigación básica
+- **MEDIO**: Exploración, rescates estándar, investigaciones menores
+- **ALTO**: Combate moderado, rescates peligrosos, anomalías
+- **EXTREMO**: Combate intenso, situaciones letales, horror cósmico
+
+¡Usa estas plantillas como base y personalízalas para crear misiones únicas y memorables!
