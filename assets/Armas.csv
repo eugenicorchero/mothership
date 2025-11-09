@@ -1,0 +1,23 @@
+Arma (WEAPON),Coste (COST),Alcance (RANGE),Daño (DAMAGE),Disparos (SHOTS),Herida (WOUND),Especial (SPECIAL)
+Munición (Ammo),50cr,N/A,N/A,N/A,Por cargador/contenedor.,
+Hacha de Abordaje (Boarding Axe),150cr,Adyacente (Adjacent),2d10 DMG,N/A,Desgarro (Gore) [+],
+Escopeta de Combate (Combat Shotgun),"1,400cr",Cerca (Close),4d10 DMG,4,Herida de Bala (Gunshot),1d10 DMG a Alcance Largo o mayor.
+Palanca (Crowbar),25cr,N/A,N/A,N/A,Fuerza Contundente (Blunt Force) [+],"Otorga [+] en Chequeos de Fuerza para abrir esclusas atascadas, levantar objetos pesados, etc."
+Lanzallamas (Flamethrower),4kcr,Adyacente (Adjacent),2d10 DMG,4,Fuego/Explosivos (Fire/Explosives) [+],Salvación Corporal (Body Save) [-] o ser prendido en fuego (2d10 DMG/ronda).
+Pistola de Bengalas (Flare Gun),25cr,Cerca (Close),1d5 DMG,2,Fuego/Explosivos (Fire/Explosives) [-],Bengala de alta intensidad visible de día y noche desde Alcance Largo.
+Pistola de Espuma (Foam Gun),500cr,Largo (Long),1 DMG,3,Fuerza Contundente (Blunt Force),Salvación Corporal (Body Save) o quedar atascado. Chequeo de Fuerza (Strength Check) [-] para escapar.
+Granada Fragmentación (Frag Grenade),400cr c/u,Cerca (Close),3d10 DMG,1,Fuego/Explosivos (Fire/Explosives),"Al impactar, daña a todos los Adyacentes al enemigo."
+Ametralladora Propósito General (General-Purpose Machine Gun),4.5kcr,Largo (Long),4d10 DMG,5,Herida de Bala (Gunshot) [+],A dos manos. Pesada (Heavy). El cañón puede ser maniobrado para disparar alrededor de esquinas.
+Soldador Manual (Hand Welder),250cr,Adyacente (Adjacent),1d10 DMG,N/A,N/Hemorragia (N/Bleeding),Puede cortar a través de puertas de esclusa.
+Cortadora Láser (Laser Cutter),"1,200cr",Largo (Long),1d100 DMG,6,Hemorragia (Bleeding) [+] o Desgarro (Gore) [+],"A dos manos. Pesada (Heavy). 1 ronda entre disparos. Recarga: 1h (energía), 6h (solar)."
+Pistola de Clavos (Nail Gun),150cr,Cerca (Close),1d5 DMG,32,Hemorragia (Bleeding),
+Rifle de Pulso (Pulse Rifle),2.4kcr,Largo (Long),3d10 DMG,5,Herida de Bala (Gunshot),
+Revólver (Revolver),750cr,Cerca (Close),1d10+1 DMG,6,Herida de Bala (Gunshot),
+Pistola de Aparejo (Rigging Gun),350cr,Cerca (Close),1d10 DMG + 2d10 DMG cuando se remueve,1,Hemorragia (Bleeding) [+],Microfilamento de 100m. Salvación Corporal (Body Save) o quedar enredado.
+Bisturí (Scalpel),50cr,Adyacente (Adjacent),1d5 DMG,N/A,Hemorragia (Bleeding) [+],
+Rifle Inteligente (Smart Rifle),5kcr,Extremo (Extreme),4d10 DMG (AA),3,Herida de Bala (Gunshot) [+],[-] en Chequeo de Combate (Combat Check) cuando se dispara a Alcance Cerca (Close Range).
+SMG (SMG),1kcr,Largo (Long),2d10 DMG,5,Herida de Bala (Gunshot),Puede dispararse con una sola mano.
+Porra Eléctrica (Stun Baton),150cr,Adyacente (Adjacent),1d5 DMG,N/A,Fuerza Contundente (Blunt Force),Salvación Corporal (Body Save) o aturdido 1 ronda.
+Pistola Trang (Trang Pistol),250cr,Cerca (Close),1d5 DMG,6,Fuerza Contundente (Blunt Force),Si se inflige Daño: el enemigo debe hacer una Salvación Corporal (Body Save) o quedar inconsciente 1d10 rondas.
+Desarmado (Unnarmed),Gratis (Free),Adyacente (Adjacent),Str/10 DMG,N/A,Fuerza Contundente (Blunt Force),
+Vibechete (Vibechete),1kcr,Adyacente (Adjacent),3d10 DMG (AA),N/A,Hemorragia (Bleeding) + Desgarro (Gore),"Al infligir una Herida (Wound), tira en AMBAS columnas de Hemorragia (Bleeding) y Desgarro (Gore)."

@@ -1,0 +1,6 @@
+Armadura (ARMOR),Coste (COST),PA (AP),O2 (02),Velocidad (SPEED),Especial (SPECIAL)
+Atuendo Estándar de Tripulante (Standard Crew Attire),100cr,.,Normal,Ninguno (None),Ropa básica.
+Traje de Vacío (Vaccsuit),10kcr,1,12 hrs,[-],"Diseñado para operaciones en el espacio exterior. Incluye comunicaciones de corto alcance, linterna frontal y blindaje contra radiación. Descompresión en 1d5 rondas si es perforado."
+Traje de Riesgo (Hazard Suit),4kcr,7,1 hr,5,"Protección ambiental mientras se exploran planetas desconocidos. Incluye filtro de aire, protección contra calor/frío extremos, recuperación de hidratación (1L de agua dura 4 días), comunicaciones de corto alcance, linterna frontal y blindaje contra radiación."
+Uniforme de Combate Estándar (Standard Battle Dress),2kcr,3,Normal,Ninguno (None),Armadura con placas ligeras usada por la mayoría de los marines. Incluye comunicaciones de corto alcance.
+Uniforme de Combate Avanzado (Advanced Battle Dress),12kcr,10,1 hr,[-],"Armadura pesada para marines desplegados en combates de alta intensidad fuera del planeta. Incluye comunicaciones de corto alcance, cámara corporal (body cam), linterna frontal, HUD, tejido exoesquelético (Chequeos de Fuerza [+]) y blindaje contra radiación. Reducción de Daño: 3."
