@@ -736,50 +736,7 @@
 
                 </div>
 
-                <div class="hidden"
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-2xl text-terminal-accent font-bold">�️ PROTECCIÓN</div>
-                            <span class="text-xs text-terminal-accent border border-terminal-accent px-2 py-1">VITAL</span>
-                        </div>
-                        <p class="text-sm text-terminal-color mb-3">
-                            Sistemas de protección personal y ambiental. Desde trajes ligeros hasta armaduras 
-                            de combate pesado para entornos hostiles extremos.
-                        </p>
-                        <div class="border-t border-terminal-accent pt-3">
-                            <div class="text-xs text-terminal-color space-y-1">
-                                <p><strong>Tipos:</strong> Trajes EVA, Armadura de Combate, Hazmat</p>
-                                <p><strong>Protección:</strong> Balística, Radiación, Biológica, Vacío</p>
-                                <p><strong>Sistemas:</strong> Soporte Vital, Comunicaciones, HUD</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center text-xs mt-4">
-                            <span class="text-gray-400">Certificado: ISO-2247</span>
-                            <span class="text-terminal-accent hover:text-white">→ VER ESPECIFICACIONES</span>
-                        </div>
-                    </a>
-
-                    <!-- Sección de Equipamiento General -->
-                    <a href="assets/mothership-equipment.pdf" target="_blank" class="data-card block hover:bg-green-900/20 cursor-pointer smooth-transition">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-2xl text-terminal-color font-bold">⚙️ EQUIPAMIENTO</div>
-                            <span class="text-xs text-terminal-color border border-terminal-color px-2 py-1">ESENCIAL</span>
-                        </div>
-                        <p class="text-sm text-terminal-color mb-3">
-                            Herramientas, dispositivos médicos, equipos de supervivencia y tecnología 
-                            especializada para operaciones en campo.
-                        </p>
-                        <div class="border-t border-terminal-color pt-3">
-                            <div class="text-xs text-terminal-color space-y-1">
-                                <p><strong>Médico:</strong> Stimpaks, Análisis, Cirugía de Campo</p>
-                                <p><strong>Supervivencia:</strong> Oxígeno, Comida, Refugio, Navegación</p>
-                                <p><strong>Tecnológico:</strong> Comunicaciones, Sensores, Análisis</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center text-xs mt-4">
-                            <span class="text-gray-400">Versión: 7.3.2</span>
-                            <span class="text-terminal-color hover:text-white">→ EXPLORAR INVENTARIO</span>
-                        </div>
-                    </a>
+                <!-- Código HTML obsoleto eliminado -->
                 <!-- Información Corporativa -->
                 <div class="mt-8 p-4 border-t border-dark-border">
                     <h3 class="text-xl text-terminal-accent mb-4">📋 INFORMACIÓN DE SUMINISTROS</h3>
@@ -1235,152 +1192,9 @@
         </div>
     </div>
 
-    <!-- MODAL PARA NUEVA MISIÓN -->
-    <div id="mission-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-        <div class="p-8 w-11/12 md:w-2/3 max-h-[90vh] overflow-y-auto bg-black border-4 border-terminal-accent shadow-xl shadow-terminal-accent/50">
-            <div class="flex justify-between items-center mb-6 border-b border-terminal-accent pb-4">
-                <h3 class="text-2xl text-terminal-accent">CREAR NUEVA MISIÓN</h3>
-                <button id="close-mission-modal" class="text-terminal-color hover:text-terminal-accent text-2xl">✕</button>
-            </div>
-            <form id="mission-form" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">TÍTULO DE LA MISIÓN:</label>
-                        <input type="text" id="mission-title" class="terminal-input" placeholder="Ej: Operation Phoenix">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">CLIENTE:</label>
-                        <input type="text" id="mission-client" class="terminal-input" placeholder="Ej: Mothership Corp.">
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">COMPENSACIÓN:</label>
-                        <input type="text" id="mission-reward" class="terminal-input" placeholder="Ej: 25,000₡">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">PLANETA/ESTACIÓN:</label>
-                        <input type="text" id="mission-location" class="terminal-input" placeholder="Ej: LV-426">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">RIESGO:</label>
-                        <select id="mission-risk" class="terminal-input">
-                            <option value="BAJO">BAJO</option>
-                            <option value="MEDIO">MEDIO</option>
-                            <option value="ALTO">ALTO</option>
-                            <option value="EXTREMO">EXTREMO</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-terminal-accent text-sm font-bold mb-2">DESCRIPCIÓN BREVE:</label>
-                    <textarea id="mission-description" class="terminal-input h-20" placeholder="Descripción de la misión..."></textarea>
-                </div>
-                <div>
-                    <label class="block text-terminal-accent text-sm font-bold mb-2">DETALLES COMPLETOS:</label>
-                    <textarea id="mission-details" class="terminal-input h-32" placeholder="Briefing detallado, objetivos, personal, etc..."></textarea>
-                </div>
-            </form>
-            <div class="flex justify-between space-x-4 pt-4 border-t border-terminal-accent mt-6">
-                <button id="cancel-mission-btn" class="terminal-btn btn-reject">CANCELAR</button>
-                <button id="save-mission-btn" class="terminal-btn">CREAR MISIÓN</button>
-            </div>
-        </div>
-    </div>
+    <!-- Modal de nueva misión eliminado - ahora se crean automáticamente con plantillas -->
 
-    <!-- MODAL PARA GESTIÓN DE INVENTARIO -->
-    <div id="inventory-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-        <div class="p-8 w-11/12 md:w-2/3 max-h-[90vh] overflow-y-auto bg-black border-4 border-terminal-color shadow-xl shadow-terminal-color/50">
-            <div class="flex justify-between items-center mb-6 border-b border-terminal-color pb-4">
-                <h3 id="inventory-modal-title" class="text-2xl text-terminal-accent">AÑADIR TRIPULANTE</h3>
-                <button id="close-inventory-modal" class="text-terminal-color hover:text-terminal-accent text-2xl">✕</button>
-            </div>
-            
-            <!-- Formulario para tripulante -->
-            <div id="crew-form" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">NOMBRE:</label>
-                        <input type="text" id="crew-name" class="terminal-input" placeholder="Ej: Sarah Connor">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">CLASE:</label>
-                        <select id="crew-class" class="terminal-input">
-                            <option value="Teamster">Teamster</option>
-                            <option value="Marine">Marine</option>
-                            <option value="Scientist">Scientist</option>
-                            <option value="Android">Android</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-4 gap-4">
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">STRESS:</label>
-                        <input type="number" id="crew-stress" class="terminal-input" value="0" min="0" max="20">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">HEALTH:</label>
-                        <input type="number" id="crew-health" class="terminal-input" value="100" min="0" max="100">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">COMBAT:</label>
-                        <input type="number" id="crew-combat" class="terminal-input" value="30" min="10" max="80">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">INSTINCT:</label>
-                        <input type="number" id="crew-instinct" class="terminal-input" value="30" min="10" max="80">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formulario para equipo -->
-            <div id="item-form" class="space-y-4 hidden">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">NOMBRE DEL ITEM:</label>
-                        <input type="text" id="item-name" class="terminal-input" placeholder="Ej: Pulse Rifle M41A">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">CATEGORÍA:</label>
-                        <select id="item-category" class="terminal-input">
-                            <option value="weapons">Armamento</option>
-                            <option value="medical">Médico</option>
-                            <option value="tools">Herramientas</option>
-                            <option value="supplies">Suministros</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">CANTIDAD:</label>
-                        <input type="number" id="item-quantity" class="terminal-input" value="1" min="1">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">PESO (kg):</label>
-                        <input type="number" id="item-weight" class="terminal-input" value="1" min="0" step="0.1">
-                    </div>
-                    <div>
-                        <label class="block text-terminal-accent text-sm font-bold mb-2">ESTADO:</label>
-                        <select id="item-condition" class="terminal-input">
-                            <option value="excellent">Excelente</option>
-                            <option value="good">Bueno</option>
-                            <option value="damaged">Dañado</option>
-                            <option value="broken">Roto</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-terminal-accent text-sm font-bold mb-2">DESCRIPCIÓN:</label>
-                    <textarea id="item-description" class="terminal-input h-20" placeholder="Descripción del equipamiento..."></textarea>
-                </div>
-            </div>
-
-            <div class="flex justify-between space-x-4 pt-4 border-t border-terminal-color mt-6">
-                <button id="cancel-inventory-btn" class="terminal-btn btn-reject">CANCELAR</button>
-                <button id="save-inventory-btn" class="terminal-btn">GUARDAR</button>
-            </div>
-        </div>
-    </div>
+    <!-- Modal de inventario eliminado - funcionalidad integrada en las pestañas del arsenal -->
 
     <script>
         // --- CONSTANTES Y ESTADO ---
@@ -1412,52 +1226,9 @@
         let CONTRACT_TO_PASSWORD = {};
 
         // --- GENERADOR AUTOMÁTICO DE CONTRATOS ---
-        /*
-        PLANTILLA PARA NUEVOS CONTRATOS:
+        // Ver TEMPLATES.md para documentación completa del sistema
         
-        Para crear un nuevo contrato, necesito:
-        - Título/Nombre de la operación
-        - Ubicación/Planeta  
-        - Tipo de misión (extracción, reconocimiento, combate, investigación, etc.)
-        - Nivel de riesgo (BAJO, MEDIO, ALTO, EXTREMO)
-        - Objetivos principales (2-4 puntos)
-        - Personal clave (opcional)
-        - Contexto/situación (descripción del problema)
-        - Compensación
-        
-        El sistema generará automáticamente:
-        1. ID incremental
-        2. Contraseña alfanumérica relacionada (4-6 caracteres)
-        3. Entrada en CONTRACT_DATA
-        4. Sección clasificada completa en terminal
-        5. Mapeos de contraseñas actualizados
-        6. Orden de visualización correcto
-        */
-        
-        function generateContractPassword(title, location) {
-            // Generar contraseña basada en título y ubicación
-            const titleParts = title.toUpperCase().replace(/[^A-Z0-9]/g, '').split('');
-            const locationParts = location.toUpperCase().replace(/[^A-Z0-9]/g, '').split('');
-            
-            let password = '';
-            
-            // Tomar 2-3 caracteres del título
-            password += titleParts.slice(0, 3).join('');
-            
-            // Añadir separador o número
-            password += '_';
-            
-            // Tomar 2-3 caracteres de la ubicación
-            password += locationParts.slice(0, 2).join('');
-            
-            // Limitar a 6 caracteres máximo
-            return password.substring(0, 6);
-        }
-        
-        function getNextContractId() {
-            const existingIds = Object.keys(CONTRACT_DATA).map(id => parseInt(id));
-            return Math.max(...existingIds, -1) + 1;
-        }
+        // Funciones auxiliares para generación automática movidas a TEMPLATES.md
 
         // --- SISTEMA DE SONIDOS ---
         const AUDIO_CONTEXT = new (window.AudioContext || window.webkitAudioContext)();
@@ -1561,7 +1332,6 @@
                 });
 
                 audio.addEventListener('error', (e) => {
-                    console.warn(`Audio no disponible: ${src}`);
                     // Crear audio sintético como fallback
                     const synthAudio = createSyntheticAudio(src);
                     MISSION_AUDIO_CACHE.set(src, synthAudio);
@@ -1651,45 +1421,7 @@
             }
         }
 
-        function createAudioPlayer(missionId) {
-            const config = MISSION_AUDIO_CONFIG[missionId];
-            if (!config) return '';
-
-            let audioControls = '';
-            
-            if (config.briefing) {
-                audioControls += `
-                    <button onclick="playMissionAudio('${missionId}', 'briefing')" 
-                            class="text-xs px-3 py-1 mr-2 mb-2 border border-terminal-color text-terminal-color hover:bg-terminal-color hover:text-black transition-all duration-200">
-                        ▶ BRIEFING AUDIO
-                    </button>`;
-            }
-            
-            if (config.mother) {
-                audioControls += `
-                    <button onclick="playMissionAudio('${missionId}', 'mother')" 
-                            class="text-xs px-3 py-1 mr-2 mb-2 border border-terminal-accent text-terminal-accent hover:bg-terminal-accent hover:text-black transition-all duration-200">
-                        ▶ MOTHER IA
-                    </button>`;
-            }
-
-            if (audioControls) {
-                audioControls += `
-                    <button onclick="stopAllMissionAudio()" 
-                            class="stop-btn text-xs px-3 py-1 mr-2 mb-2 border border-error-color text-error-color hover:bg-error-color hover:text-white transition-all duration-200">
-                        ⏹ STOP
-                    </button>`;
-            }
-
-            return audioControls ? `
-                <div class="audio-controls border-t border-dark-border pt-3 mt-3 p-2 rounded">
-                    <p class="text-xs text-terminal-accent mb-2 font-bold">→ AUDIO LOGS DISPONIBLES:</p>
-                    <div class="flex flex-wrap gap-1">
-                        ${audioControls}
-                    </div>
-                </div>
-            ` : '';
-        }
+        // Función createAudioPlayer eliminada - no utilizada (controles de audio integrados directamente en HTML)
 
         // --- DATOS ESTÁTICOS ---
 
@@ -2341,57 +2073,7 @@
 
         // 8. Event Listeners para Nuevas Funcionalidades
 
-        // Gestión de Misiones
-        const ADD_MISSION_BTN = document.getElementById('add-mission-btn');
-        const MISSION_MODAL = document.getElementById('mission-modal');
-        const CLOSE_MISSION_MODAL = document.getElementById('close-mission-modal');
-        const SAVE_MISSION_BTN = document.getElementById('save-mission-btn');
-        const CANCEL_MISSION_BTN = document.getElementById('cancel-mission-btn');
-
-        if (ADD_MISSION_BTN) {
-            ADD_MISSION_BTN.addEventListener('click', () => {
-                playSystemSound('modal');
-                MISSION_MODAL.classList.remove('hidden');
-            });
-        }
-
-        if (CLOSE_MISSION_MODAL) {
-            CLOSE_MISSION_MODAL.addEventListener('click', () => {
-                playSystemSound('button');
-                MISSION_MODAL.classList.add('hidden');
-            });
-        }
-
-        if (CANCEL_MISSION_BTN) {
-            CANCEL_MISSION_BTN.addEventListener('click', () => {
-                playSystemSound('button');
-                MISSION_MODAL.classList.add('hidden');
-            });
-        }
-
-        if (SAVE_MISSION_BTN) {
-            SAVE_MISSION_BTN.addEventListener('click', () => {
-                const formData = {
-                    title: document.getElementById('mission-title').value,
-                    client: document.getElementById('mission-client').value,
-                    reward: document.getElementById('mission-reward').value,
-                    location: document.getElementById('mission-location').value,
-                    risk: document.getElementById('mission-risk').value,
-                    description: document.getElementById('mission-description').value,
-                    details: document.getElementById('mission-details').value
-                };
-
-                if (formData.title && formData.reward) {
-                    addNewMission(formData);
-                    MISSION_MODAL.classList.add('hidden');
-                    // Limpiar formulario
-                    document.getElementById('mission-form').reset();
-                } else {
-                    playSystemSound('error');
-                    showNotification('Complete al menos título y compensación', 'error');
-                }
-            });
-        }
+        // Sistema de gestión de misiones obsoleto eliminado - ahora se usan plantillas automáticas
 
         // 9. Función para agregar efecto de escritura
         function addTypingEffect() {
