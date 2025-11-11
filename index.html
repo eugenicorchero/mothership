@@ -262,6 +262,37 @@
             text-shadow: 0 0 5px var(--terminal-color);
         }
 
+        /* Estilos para controles de audio */
+        .audio-controls {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--dark-border);
+        }
+
+        .audio-controls button {
+            font-size: 11px;
+            padding: 6px 12px;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid var(--terminal-color);
+            color: var(--terminal-color);
+        }
+
+        .audio-controls button:hover {
+            background: var(--terminal-color);
+            color: black;
+            box-shadow: 0 0 10px var(--terminal-color);
+        }
+
+        .audio-controls .stop-btn {
+            border-color: var(--error-color);
+            color: var(--error-color);
+        }
+
+        .audio-controls .stop-btn:hover {
+            background: var(--error-color);
+            color: white;
+        }
+
         /* Animación del ASCII art */
         @keyframes bootup {
             0% { 
@@ -567,131 +598,7 @@
                 <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// CONTRATOS ACTIVOS</p>
                 <h2 class="text-4xl my-4 text-terminal-accent">LISTADO DE ASIGNACIONES (Q3-2247)</h2>
                 <div id="contract-list" class="space-y-6">
-                    <!-- Contrato 1: Samsa VI - Misión Real -->
-                    <div class="contract-item data-card relative border-terminal-accent" data-id="1">
-                        <div class="flex justify-between items-start mb-2">
-                            <p class="text-2xl text-terminal-accent font-bold">BRIEFING 180924609: Samsa VI</p>
-                            <span class="text-xs text-terminal-accent border border-terminal-accent px-2 py-1 font-bold">ACTIVO</span>
-                        </div>
-                        <div class="grid md:grid-cols-4 gap-3 mb-3">
-                            <div>
-                                <p class="text-xs text-gray-400">CLIENTE</p>
-                                <p class="text-sm text-terminal-color">Mothership Corp.</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">COMPENSACIÓN</p>
-                                <p class="text-sm text-terminal-accent font-bold">2 meses + Peligro</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">PLANETA</p>
-                                <p class="text-sm text-terminal-color">Samsa VI</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400">POBLACIÓN</p>
-                                <p class="text-sm text-terminal-color">25 (Sin contacto)</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-terminal-color mb-2">
-                            <span class="text-terminal-accent font-bold">Greta Base</span> no responde desde hace 6 meses. 
-                            Misión de recuperación y evacuación de personal esencial. 
-                            <span class="text-error-color">Situación de emergencia confirmada.</span>
-                        </p>
-                        <div class="text-xs text-terminal-color mb-2 bg-black/30 p-2 border-l-2 border-terminal-accent">
-                            <strong>Objetivos:</strong> Contactar con 2º Teniente Kaplan, restaurar comunicaciones, 
-                            evacuar Dr. Edem y Hinton (Sintético)
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-error-color danger-text font-bold">NIVEL DE RIESGO: EXTREMO</span>
-                            <span class="text-xs text-terminal-accent hover:text-white cursor-pointer font-bold">→ VER BRIEFING COMPLETO</span>
-                        </div>
-                    </div>
-
-                    <!-- Contrato 2: Mantenimiento -->
-                    <div class="contract-item data-card relative opacity-60" data-id="2">
-                        <div class="flex justify-between items-start mb-2">
-                            <p class="text-2xl text-gray-400 font-bold">MSN-2247-SEV: Sevastopol Medical</p>
-                            <span class="text-xs text-gray-500 border border-gray-500 px-2 py-1">EN CURSO</span>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-4 mb-3">
-                            <div>
-                                <p class="text-xs text-gray-500">CLIENTE</p>
-                                <p class="text-sm text-gray-400">Geoman Corp.</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500">COMPENSACIÓN</p>
-                                <p class="text-sm text-gray-400">15.000₡ + Horas</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500">ESTADO</p>
-                                <p class="text-sm text-gray-400">Equipo asignado</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-2">
-                            Emergencia médica en estación Sevastopol. <span class="text-gray-500">Contrato ya asignado a otro equipo.</span>
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-gray-500">NIVEL DE RIESGO: MEDIO</span>
-                            <span class="text-xs text-gray-500">→ NO DISPONIBLE</span>
-                        </div>
-                    </div>
-
-                    <!-- Contrato 3: Seguridad -->
-                    <div class="contract-item data-card relative opacity-60" data-id="3">
-                        <div class="flex justify-between items-start mb-2">
-                            <p class="text-2xl text-gray-400 font-bold">MSN-2247-F161: Fury Extermination</p>
-                            <span class="text-xs text-gray-500 border border-gray-500 px-2 py-1">EN CURSO</span>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-4 mb-3">
-                            <div>
-                                <p class="text-xs text-gray-500">CLIENTE</p>
-                                <p class="text-sm text-gray-400">U.S. Colonial Admin.</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500">COMPENSACIÓN</p>
-                                <p class="text-sm text-gray-400">22.000₡ + Prima</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500">ESTADO</p>
-                                <p class="text-sm text-gray-400">Equipo desplegado</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-2">
-                            Descontaminación de prisión Fiorina-161. <span class="text-gray-500">Operación en progreso desde hace 2 semanas.</span>
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-gray-500">NIVEL DE RIESGO: ALTO</span>
-                            <span class="text-xs text-gray-500">→ NO DISPONIBLE</span>
-                        </div>
-                    </div>
-
-                    <!-- Contrato 4: Alto Riesgo -->
-                    <div class="contract-item data-card relative opacity-60" data-id="4">
-                        <div class="flex justify-between items-start mb-2">
-                            <p class="text-2xl text-gray-400 font-bold">MSN-2247-SCY: Operation "Scythe"</p>
-                            <span class="text-xs text-gray-500 border border-gray-500 px-2 py-1">EN CURSO</span>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-4 mb-3">
-                            <div>
-                                <p class="text-xs text-gray-500">CLIENTE</p>
-                                <p class="text-sm text-gray-400">Mothership Command - Riesgos</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500">COMPENSACIÓN</p>
-                                <p class="text-sm text-gray-400">45.000₡ + Bonos</p>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500">ESTADO</p>
-                                <p class="text-sm text-gray-400">Especialistas asignados</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-2">
-                            Desmantelamiento remoto de plataforma minera. <span class="text-gray-500">Equipo de élite desplegado hace 1 mes.</span>
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-gray-500">NIVEL DE RIESGO: EXTREMO</span>
-                            <span class="text-xs text-gray-500">→ NO DISPONIBLE</span>
-                        </div>
-                    </div>
+                    <!-- Los contratos se cargan dinámicamente desde CONTRACT_DATA -->
                 </div>
             </section>
 
@@ -1077,9 +984,105 @@
                             ← VOLVER AL MENÚ PRINCIPAL
                         </button>
                     </div>
-                    
-                    <!-- Header de Contenido Clasificado -->
-                    <div class="p-6 border-2 border-terminal-accent bg-black shadow-lg shadow-terminal-accent/30 mb-6">
+
+                    <!-- CONTENIDO YPSILON-14 -->
+                    <div id="ypsilon-content" class="mission-content hidden">
+                        <!-- BRIEFING YPSILON-14 - PRIORIDAD ALPHA-CERO -->
+                        <div class="p-6 border-2 border-error-color bg-red-900/20 shadow-lg shadow-error-color/30 mb-6">
+                        <div class="text-center mb-4">
+                            <p class="text-3xl mb-2 text-error-color font-bold">⚠️ BRIEFING PRIORITARIO ⚠️</p>
+                            <p class="text-lg text-terminal-color">OPERACIÓN: "YPSILON-14" - EXTRACCIÓN ALPHA-CERO</p>
+                        </div>
+                        
+                        <div class="border-t border-error-color pt-4 mb-4">
+                            <p class="text-sm text-terminal-color mb-2">
+                                <span class="text-error-color font-bold">CÓDIGO DE CONTRATO:</span> CORP-EXTR-Y14-Delta-7
+                            </p>
+                            <p class="text-sm text-terminal-color mb-2">
+                                <span class="text-error-color font-bold">PRIORIDAD:</span> 
+                                <span class="text-error-color">BAJA</span>
+                            </p>
+                            <p class="text-sm text-terminal-color mb-4">
+                                <span class="text-error-color font-bold">TIEMPO LÍMITE:</span> 2 horas máximo en sitio
+                            </p>
+                        </div>
+
+                        <div class="border border-terminal-color p-3 bg-gray-800/30">
+                            <p class="text-terminal-accent font-bold mb-2">🎵 BRIEFING DE AUDIO - DIVISIÓN LOGÍSTICA:</p>
+                            <div class="flex items-center gap-3">
+                                <button onclick="playMissionAudio('0', 'briefing')" 
+                                        class="text-xs px-4 py-2 border border-terminal-color text-terminal-color hover:bg-terminal-color hover:text-black transition-all duration-200 flex items-center gap-2">
+                                    ▶ REPRODUCIR BRIEFING CORPORATIVO
+                                </button>
+                                <button onclick="playMissionAudio('0', 'mother')" 
+                                        class="text-xs px-4 py-2 border border-terminal-accent text-terminal-accent hover:bg-terminal-accent hover:text-black transition-all duration-200">
+                                    ▶ ANÁLISIS MOTHER IA
+                                </button>
+                                <button onclick="stopAllMissionAudio()" 
+                                        class="text-xs px-3 py-2 border border-error-color text-error-color hover:bg-error-color hover:text-white transition-all duration-200">
+                                    ⏹ PARAR
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">División Logística Mothership - Ing. Mike Reynolds</p>
+                        </div>
+
+                        <!-- Intel Clasificado Ypsilon-14 -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Datos de la Estación Minera -->
+                            <div class="data-card">
+                                <h3 class="text-lg text-terminal-accent mb-3">🏭 ESTACIÓN MINERA YPSILON-14</h3>
+                                <div class="space-y-2 text-sm">
+                                    <p><strong>Ubicación:</strong> Asteroide YPS-14, Sector 47-Beta</p>
+                                    <p><strong>Operación:</strong> Extracción de Metales Raros de Alta Densidad</p>
+                                    <p><strong>Personal Clave:</strong> Ing. Mike Reynolds (Geólogo Jefe)</p>
+                                    <p><strong>Estado Instalación:</strong> <span class="text-terminal-accent">OPERACIONAL</span></p>
+                                    <p><strong>Última Transmisión:</strong> <span class="text-yellow-400">HACE 18 HORAS</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Perfil del Personal -->
+                            <div class="data-card">
+                                <h3 class="text-lg text-terminal-accent mb-3">👤 INGENIERO MIKE REYNOLDS</h3>
+                                <div class="space-y-2 text-sm">
+                                    <p><strong>Clasificación:</strong> Nivel Alpha - Acceso Total</p>
+                                    <p><strong>Especialidad:</strong> Geología Profunda, Metales Raros</p>
+                                    <p><strong>Proyecto Asignado:</strong> <span class="text-error-color">CLASIFICADO - IMPORTANCIA MÁXIMA</span></p>
+                                    <p><strong>Estado Psicológico:</strong> <span class="text-yellow-400">Estrés Operacional Alto</span></p>
+                                    <p><strong>Reasignación:</strong> <span class="text-terminal-accent">AUTORIZADA - PRIORIDAD 1</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Protocolos de Extracción -->
+                        <div class="data-card mt-6">
+                            <h3 class="text-lg text-terminal-accent mb-3">📋 PROTOCOLOS DE EXTRACCIÓN CRÍTICA</h3>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <p class="text-terminal-accent font-bold mb-2">FASES DE MISIÓN:</p>
+                                    <ul class="space-y-1">
+                                        <li>• <strong>Fase 1:</strong> Aproximación y atraque (15 min máx.)</li>
+                                        <li>• <strong>Fase 2:</strong> Localización de Reynolds (30 min máx.)</li>
+                                        <li>• <strong>Fase 3:</strong> Carga de material (60 min máx.)</li>
+                                        <li>• <strong>Fase 4:</strong> Extracción inmediata (15 min máx.)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-error-color font-bold mb-2">ADVERTENCIAS CRÍTICAS:</p>
+                                    <ul class="space-y-1 text-gray-300">
+                                        <li>• <span class="text-error-color">TIEMPO LÍMITE ABSOLUTO:</span> 2 horas</li>
+                                        <li>• <span class="text-yellow-400">Personal bajo estrés:</span> Manejar con cuidado</li>
+                                        <li>• <span class="text-terminal-accent">Material sensible:</span> Contenedores especiales</li>
+                                        <li>• <span class="text-error-color">Comunicación mínima:</span> Solo necesaria</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONTENIDO SAMSA VI -->
+                    <div id="samsa-content" class="mission-content hidden">
+                        <!-- Header de Contenido Clasificado -->
+                        <div class="p-6 border-2 border-terminal-accent bg-black shadow-lg shadow-terminal-accent/30 mb-6">
                         <div class="text-center mb-4">
                             <p class="text-3xl mb-2 text-terminal-accent font-bold">🔒 BRIEFING CONFIDENCIAL 🔒</p>
                             <p class="text-lg text-terminal-color">OPERACIÓN: "SAMSA VI" - MISIÓN DE RECONEXIÓN</p>
@@ -1182,12 +1185,14 @@
                     <!-- Footer -->
                     <div class="mt-6 pt-4 border-t border-dark-border text-center">
                         <p class="text-xs text-gray-500">
-                            _Registro de acceso autorizado: Usuario SAMSA-6 | Sesión iniciada: <span id="session-time"></span>_
+                            _Registro de acceso autorizado: Usuario <span id="current-user">SAMSA-6</span> | Sesión iniciada: <span id="session-time"></span>_
                         </p>
                         <p class="text-xs text-error-color mt-2">
                             Este terminal se desconectará automáticamente en 15 minutos por seguridad.
                         </p>
                     </div>
+                    </div> <!-- Fin samsa-content -->
+                    </div> <!-- Fin ypsilon-content -->
                 </div>
             </section>
         </main>
@@ -1397,11 +1402,95 @@
         const LOGIN_MESSAGE = document.getElementById('login-message');
         const RESTRICTED_CONTENT = document.getElementById('restricted-content');
 
-        const HARDCODED_PASSWORD = 'SAMSA-6';
+        // Mapeo de contraseñas a tipos de misión (definido estáticamente para evitar errores de orden)
+        const MISSION_PASSWORDS = {
+            'YPS_14': 'ypsilon',
+            'SAMSA-6': 'samsa'
+        };
+
+        // Mapeo de contratos a contraseñas (se actualizará después de cargar CONTRACT_DATA)
+        let CONTRACT_TO_PASSWORD = {};
+
+        // --- GENERADOR AUTOMÁTICO DE CONTRATOS ---
+        /*
+        PLANTILLA PARA NUEVOS CONTRATOS:
+        
+        Para crear un nuevo contrato, necesito:
+        - Título/Nombre de la operación
+        - Ubicación/Planeta  
+        - Tipo de misión (extracción, reconocimiento, combate, investigación, etc.)
+        - Nivel de riesgo (BAJO, MEDIO, ALTO, EXTREMO)
+        - Objetivos principales (2-4 puntos)
+        - Personal clave (opcional)
+        - Contexto/situación (descripción del problema)
+        - Compensación
+        
+        El sistema generará automáticamente:
+        1. ID incremental
+        2. Contraseña alfanumérica relacionada (4-6 caracteres)
+        3. Entrada en CONTRACT_DATA
+        4. Sección clasificada completa en terminal
+        5. Mapeos de contraseñas actualizados
+        6. Orden de visualización correcto
+        */
+        
+        function generateContractPassword(title, location) {
+            // Generar contraseña basada en título y ubicación
+            const titleParts = title.toUpperCase().replace(/[^A-Z0-9]/g, '').split('');
+            const locationParts = location.toUpperCase().replace(/[^A-Z0-9]/g, '').split('');
+            
+            let password = '';
+            
+            // Tomar 2-3 caracteres del título
+            password += titleParts.slice(0, 3).join('');
+            
+            // Añadir separador o número
+            password += '_';
+            
+            // Tomar 2-3 caracteres de la ubicación
+            password += locationParts.slice(0, 2).join('');
+            
+            // Limitar a 6 caracteres máximo
+            return password.substring(0, 6);
+        }
+        
+        function getNextContractId() {
+            const existingIds = Object.keys(CONTRACT_DATA).map(id => parseInt(id));
+            return Math.max(...existingIds, -1) + 1;
+        }
 
         // --- SISTEMA DE SONIDOS ---
         const AUDIO_CONTEXT = new (window.AudioContext || window.webkitAudioContext)();
         const SOUND_ENABLED = true;
+
+        // --- SISTEMA DE AUDIO PARA MISIONES ---
+        const MISSION_AUDIO_CACHE = new Map();
+        const AUDIO_LOADER_QUEUE = [];
+        let isLoadingAudio = false;
+
+        // Configuración de audios por misión
+        const MISSION_AUDIO_CONFIG = {
+            '0': {
+                briefing: 'assets/audio/ypsilon_briefing.mp3',
+                mother: 'assets/audio/mother_extraction.mp3'
+            },
+            '1': {
+                briefing: 'assets/audio/samsa_briefing.mp3',
+                mother: 'assets/audio/mother_warning.mp3'
+            },
+            '2': {
+                briefing: 'assets/audio/corporate_briefing.mp3',
+                mother: 'assets/audio/mother_analysis.mp3'
+            },
+            '3': {
+                briefing: 'assets/audio/emergency_briefing.mp3',
+                mother: 'assets/audio/mother_emergency.mp3'
+            },
+            '4': {
+                briefing: 'assets/audio/investigation_briefing.mp3',
+                mother: 'assets/audio/mother_investigation.mp3'
+            }
+        };
 
         // Generar sonidos sintéticos para diferentes acciones
         function createTone(frequency, duration, type = 'sine') {
@@ -1455,6 +1544,153 @@
             }
         }
 
+        // --- FUNCIONES DE AUDIO PARA MISIONES ---
+
+        function preloadAudio(src) {
+            return new Promise((resolve, reject) => {
+                if (MISSION_AUDIO_CACHE.has(src)) {
+                    resolve(MISSION_AUDIO_CACHE.get(src));
+                    return;
+                }
+
+                const audio = new Audio();
+                
+                audio.addEventListener('loadeddata', () => {
+                    MISSION_AUDIO_CACHE.set(src, audio);
+                    resolve(audio);
+                });
+
+                audio.addEventListener('error', (e) => {
+                    console.warn(`Audio no disponible: ${src}`);
+                    // Crear audio sintético como fallback
+                    const synthAudio = createSyntheticAudio(src);
+                    MISSION_AUDIO_CACHE.set(src, synthAudio);
+                    resolve(synthAudio);
+                });
+
+                audio.preload = 'auto';
+                audio.src = src;
+                audio.load();
+            });
+        }
+
+        function createSyntheticAudio(src) {
+            // Crear audio sintético basado en el tipo de archivo
+            const isMother = src.includes('mother');
+            const isBriefing = src.includes('briefing');
+            
+            return {
+                play: () => {
+                    if (isMother) {
+                        // Sonido de IA MOTHER - tono bajo y modulado
+                        createTone(300, 0.5, 'triangle');
+                        setTimeout(() => createTone(250, 0.3, 'triangle'), 200);
+                    } else if (isBriefing) {
+                        // Sonido de briefing - tonos comunicación
+                        createTone(800, 0.2);
+                        setTimeout(() => createTone(600, 0.3), 100);
+                    }
+                },
+                pause: () => {},
+                currentTime: 0,
+                duration: 1,
+                paused: true
+            };
+        }
+
+        async function loadMissionAudio(missionId) {
+            if (!MISSION_AUDIO_CONFIG[missionId]) return;
+
+            const audioConfig = MISSION_AUDIO_CONFIG[missionId];
+            const loadPromises = [];
+
+            for (const [type, src] of Object.entries(audioConfig)) {
+                loadPromises.push(preloadAudio(src));
+            }
+
+            try {
+                await Promise.all(loadPromises);
+                showNotification(`Audio de misión ${missionId} cargado`, 'success', 2000);
+            } catch (error) {
+                showNotification('Usando audio sintético de respaldo', 'warning', 2000);
+            }
+        }
+
+        function playMissionAudio(missionId, audioType = 'briefing') {
+            const config = MISSION_AUDIO_CONFIG[missionId];
+            if (!config || !config[audioType]) {
+                showNotification('Audio no disponible', 'error', 2000);
+                return;
+            }
+
+            const audioSrc = config[audioType];
+            const audio = MISSION_AUDIO_CACHE.get(audioSrc);
+            
+            if (audio) {
+                // Detener otros audios primero
+                stopAllMissionAudio();
+                
+                audio.currentTime = 0;
+                audio.play().catch(() => {
+                    showNotification('Error reproduciendo audio', 'error', 2000);
+                });
+
+                showNotification(`Reproduciendo: ${audioType.toUpperCase()}`, 'info', 2000);
+                playSystemSound('modal');
+            } else {
+                showNotification('Audio no cargado', 'error', 2000);
+            }
+        }
+
+        function stopAllMissionAudio() {
+            for (const audio of MISSION_AUDIO_CACHE.values()) {
+                if (audio && !audio.paused) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            }
+        }
+
+        function createAudioPlayer(missionId) {
+            const config = MISSION_AUDIO_CONFIG[missionId];
+            if (!config) return '';
+
+            let audioControls = '';
+            
+            if (config.briefing) {
+                audioControls += `
+                    <button onclick="playMissionAudio('${missionId}', 'briefing')" 
+                            class="text-xs px-3 py-1 mr-2 mb-2 border border-terminal-color text-terminal-color hover:bg-terminal-color hover:text-black transition-all duration-200">
+                        ▶ BRIEFING AUDIO
+                    </button>`;
+            }
+            
+            if (config.mother) {
+                audioControls += `
+                    <button onclick="playMissionAudio('${missionId}', 'mother')" 
+                            class="text-xs px-3 py-1 mr-2 mb-2 border border-terminal-accent text-terminal-accent hover:bg-terminal-accent hover:text-black transition-all duration-200">
+                        ▶ MOTHER IA
+                    </button>`;
+            }
+
+            if (audioControls) {
+                audioControls += `
+                    <button onclick="stopAllMissionAudio()" 
+                            class="stop-btn text-xs px-3 py-1 mr-2 mb-2 border border-error-color text-error-color hover:bg-error-color hover:text-white transition-all duration-200">
+                        ⏹ STOP
+                    </button>`;
+            }
+
+            return audioControls ? `
+                <div class="audio-controls border-t border-dark-border pt-3 mt-3 p-2 rounded">
+                    <p class="text-xs text-terminal-accent mb-2 font-bold">→ AUDIO LOGS DISPONIBLES:</p>
+                    <div class="flex flex-wrap gap-1">
+                        ${audioControls}
+                    </div>
+                </div>
+            ` : '';
+        }
+
         // --- DATOS ESTÁTICOS ---
 
         // --- ELEMENTOS DE CARGA DEL SO ---
@@ -1479,6 +1715,20 @@
 
         // --- DATOS DE CONTRATOS (Placeholder JSON) ---
         const CONTRACT_DATA = {
+            '0': { 
+                title: 'CORP-EXTR-Y14-Delta-7: Extracción Prioritaria Ypsilon-14', 
+                details: 'Extracción prioritaria de material minado y transferencia de personal clave desde Asteroide Ypsilon-14. División de Logística Corporativa requiere velocidad por encima de la precaución.',
+                reward: '1 mes salario base + Stimpack + Escopeta de Combate (temporal)',
+                region: 'Asteroide Ypsilon-14, Sector 47-Beta | Ing. Mike Reynolds',
+                type: 'Extracción Prioritaria - Alpha-Cero',
+                location: 'Asteroide Ypsilon-14',
+                risk: 'EXTREMO',
+                description: 'Recoger material minado de alta densidad y extraer al Ingeniero Mike Reynolds. Tiempo límite: 2 horas máximo en sitio. Cualquier demora >2h será considerada incumplimiento de contrato.',
+                client: 'Mothership Corp. - División Logística',
+                status: 'active',
+                priority: 1,
+                password: 'YPS_14'
+            },
             '1': { 
                 title: 'BRIEFING 180924609: Samsa VI Recovery Operation', 
                 details: `
@@ -1487,6 +1737,7 @@
                             <p class="text-terminal-accent font-bold mb-2">SITUACIÓN:</p>
                             <p class="text-sm">La colonia de terraformación Greta Base ha experimentado una interrupción en las comunicaciones. Se requiere equipo especializado para restablecer el contacto y evaluar el estado operacional.</p>
                         </div>
+
                         
                         <div class="border border-terminal-color p-3">
                             <p class="text-terminal-accent font-bold mb-2">OBJETIVOS PRINCIPALES:</p>
@@ -1499,16 +1750,6 @@
                             </ul>
                         </div>
 
-                        <div class="border border-terminal-color p-3 bg-gray-900/30">
-                            <p class="text-terminal-accent font-bold mb-2">📋 CRONOLOGÍA DE EVENTOS:</p>
-                            <div class="text-xs space-y-1">
-                                <p><strong>Hace 2 años:</strong> Establecimiento exitoso de Greta Base</p>
-                                <p><strong>Hace 1 año:</strong> Inicio de operaciones de terraformación a gran escala</p>
-                                <p><strong>Hace 9 meses:</strong> Última transmisión de rutina recibida</p>
-                                <p><strong>Hace 6 meses:</strong> Interrupción completa de comunicaciones</p>
-                                <p><strong>Presente:</strong> Misión de reconexión autorizada</p>
-                            </div>
-                        </div>
 
                         <div class="border border-terminal-color p-3">
                             <p class="text-terminal-accent font-bold mb-2">PROVISIONES POR MIEMBRO:</p>
@@ -1528,30 +1769,67 @@
                 `,
                 reward: '2 meses salario + bono de misión especializada + equipo completo',
                 region: 'Planeta: Samsa VI | Población: 25 (Sin contacto desde hace 6 meses)',
-                type: 'Misión de Reconexión - Soporte Técnico'
+                type: 'Misión de Reconexión - Soporte Técnico',
+                location: 'Samsa VI',
+                risk: 'EXTREMO',
+                description: 'Greta Base no responde desde hace 6 meses. Misión de recuperación y evacuación de personal esencial. Situación de emergencia confirmada.',
+                client: 'Mothership Corp.',
+                status: 'active',
+                priority: 2,
+                password: 'SAMSA-6'
             },
             '2': { 
-                title: 'Medical Emergency: Sevastopol Station', 
+                title: 'MSN-2247-SEV: Sevastopol Medical Emergency', 
                 details: 'Se recibió una S.O.S. desde la cubierta médica de Sevastopol Station antes de que las comunicaciones se interrumpieran. Se requiere un equipo especialista para investigar la naturaleza de la emergencia médica y prestar ayuda.',
-                reward: 'Pago: 15.000 Créditos (Por hora de contacto con vida)',
+                reward: '15.000₡ + Horas',
                 region: 'Cliente: Geoman Corp. | Tipo: Mantenimiento/Médica',
-                type: 'Campaña 3 Sesiones'
+                type: 'Emergencia Médica',
+                location: 'Sevastopol Station',
+                risk: 'MEDIO',
+                description: 'Emergencia médica en estación Sevastopol. Contrato ya asignado a otro equipo.',
+                client: 'Geoman Corp.',
+                status: 'inactive',
+                priority: 10,
+                password: null
             },
             '3': { 
-                title: 'Extermination: Fiorina "Fury" 161', 
+                title: 'MSN-2247-F161: Fury Extermination', 
                 details: 'La instalación penitenciaria abandonada Fiorina en Fury 161 necesita ser despejada para su desmantelamiento. Los informes indican una infestación persistente. Los protocolos estándar de "control de plagas" están en vigor. Se requiere la eliminación de toda la vida biológica no autorizada.',
-                reward: 'Pago: 22.000 Créditos (Prima de riesgo incluida)',
+                reward: '22.000₡ + Prima',
                 region: 'Cliente: U.S. Colonial Admin. | Tipo: Seguridad/Eliminación',
-                type: 'Oneshot'
+                type: 'Descontaminación',
+                location: 'Fiorina-161',
+                risk: 'ALTO',
+                description: 'Descontaminación de prisión Fiorina-161. Operación en progreso desde hace 2 semanas.',
+                client: 'U.S. Colonial Admin.',
+                status: 'inactive',
+                priority: 11,
+                password: null
             },
             '4': { 
-                title: 'Desmantelamiento Plataforma "Scythe"', 
+                title: 'MSN-2247-SCY: Operation "Scythe"', 
                 details: 'La plataforma minera "Scythe" está abandonada y debe ser desmantelada remotamente. Se requiere un equipo en tierra para instalar explosivos. Se reportaron rumores de una "infección". Mothership Command niega cualquier riesgo biológico.',
-                reward: 'Pago: 45.000 Créditos',
+                reward: '45.000₡ + Bonos',
                 region: 'Cliente: Mothership Command - Riesgos | Tipo: Eliminación (Alto Riesgo)',
-                type: 'Campaña Abierta'
+                type: 'Desmantelamiento Remoto',
+                location: 'Plataforma Scythe',
+                risk: 'EXTREMO',
+                description: 'Desmantelamiento remoto de plataforma minera. Equipo de élite desplegado hace 1 mes.',
+                client: 'Mothership Command - Riesgos',
+                status: 'inactive',
+                priority: 12,
+                password: null
             }
         };
+
+        // Actualizar mapeo de contratos a contraseñas después de definir CONTRACT_DATA
+        CONTRACT_TO_PASSWORD = {};
+        Object.keys(CONTRACT_DATA).forEach(id => {
+            const contract = CONTRACT_DATA[id];
+            if (contract.password) {
+                CONTRACT_TO_PASSWORD[id] = contract.password;
+            }
+        });
 
         let selectedContractId = null;
 
@@ -1609,24 +1887,32 @@
             const contractList = document.getElementById('contract-list');
             contractList.innerHTML = '';
             
-            // Renderizar misiones en orden (nuevas primero)
+
+            
+            // Renderizar misiones ordenadas por prioridad (menor número = mayor prioridad)
             const sortedIds = Object.keys(CONTRACT_DATA).sort((a, b) => {
-                const aNum = parseInt(a);
-                const bNum = parseInt(b);
+                const dataA = CONTRACT_DATA[a];
+                const dataB = CONTRACT_DATA[b];
                 
-                // Misiones personalizadas (>=5) van primero, luego las originales
-                if (aNum >= 5 && bNum < 5) return -1;
-                if (aNum < 5 && bNum >= 5) return 1;
+                // Ordenar por prioridad (números menores primero)
+                const priorityA = dataA.priority || 999;
+                const priorityB = dataB.priority || 999;
                 
-                // Dentro del mismo grupo, orden inverso (más nuevas primero)
-                return bNum - aNum;
+                if (priorityA !== priorityB) {
+                    return priorityA - priorityB;
+                }
+                
+                // Si tienen la misma prioridad, ordenar por ID
+                return parseInt(a) - parseInt(b);
             });
             
             sortedIds.forEach(id => {
                 const data = CONTRACT_DATA[id];
-                const isActive = id === '1' || parseInt(id) >= 5; // Samsa VI + misiones personalizadas activas
-                const missionHTML = createMissionCard(id, data, isActive);
-                contractList.insertAdjacentHTML('beforeend', missionHTML);
+                if (data) {
+                    const isActive = data.status === 'active';
+                    const missionHTML = createMissionCard(id, data, isActive);
+                    contractList.insertAdjacentHTML('beforeend', missionHTML);
+                }
             });
             
             // Añadir event listeners a todas las misiones
@@ -1901,6 +2187,14 @@
         // 4. Manejar botón "Aceptar Contrato"
         ACCEPT_CONTRACT_BTN.addEventListener('click', () => {
             playSystemSound('success');
+            
+            // Actualizar la contraseña mostrada según el contrato seleccionado
+            const contractPassword = CONTRACT_TO_PASSWORD[selectedContractId] || 'UNKNOWN';
+            const passwordElement = document.getElementById('contract-password');
+            if (passwordElement) {
+                passwordElement.textContent = contractPassword;
+            }
+            
             PASSWORD_REVEAL.classList.remove('hidden');
             ACCEPT_CONTRACT_BTN.classList.add('hidden');
             REJECT_CONTRACT_BTN.textContent = 'CERRAR / CLOSE';
@@ -1926,9 +2220,16 @@
             LOGIN_MESSAGE.textContent = '';
             LOGIN_MESSAGE.classList.remove('text-terminal-color', 'text-red-500', 'flicker');
 
-            if (enteredPassword === HARDCODED_PASSWORD) {
+            const missionType = MISSION_PASSWORDS[enteredPassword];
+            
+            if (missionType) {
                 // Acceso exitoso
-                LOGIN_MESSAGE.textContent = 'ACCESO CONCEDIDO. CARGANDO INTEL CLASIFICADO...';
+                const missionNames = {
+                    'samsa': 'SAMSA VI',
+                    'ypsilon': 'YPSILON-14'
+                };
+                
+                LOGIN_MESSAGE.textContent = `ACCESO CONCEDIDO. CARGANDO INTEL ${missionNames[missionType]}...`;
                 LOGIN_MESSAGE.classList.add('text-terminal-color', 'flicker');
                 
                 // Simular tiempo de carga
@@ -1942,6 +2243,23 @@
                     
                     // Mostrar contenido restringido
                     RESTRICTED_CONTENT.classList.remove('hidden');
+                    
+                    // Mostrar contenido específico según la misión
+                    const ypsContent = document.getElementById('ypsilon-content');
+                    const samsaContent = document.getElementById('samsa-content');
+                    const currentUserSpan = document.getElementById('current-user');
+                    
+                    if (missionType === 'ypsilon') {
+                        if (ypsContent) ypsContent.classList.remove('hidden');
+                        if (samsaContent) samsaContent.classList.add('hidden');
+                        if (currentUserSpan) currentUserSpan.textContent = 'YPS_14';
+                        loadMissionAudio('0'); // Ypsilon-14
+                    } else if (missionType === 'samsa') {
+                        if (samsaContent) samsaContent.classList.remove('hidden');
+                        if (ypsContent) ypsContent.classList.add('hidden');
+                        if (currentUserSpan) currentUserSpan.textContent = 'SAMSA-6';
+                        loadMissionAudio('1'); // Samsa VI
+                    }
                     
                     // Agregar timestamp de sesión
                     const sessionTime = new Date().toLocaleTimeString();
@@ -2074,14 +2392,6 @@
                 }
             });
         }
-
-
-
-                const category = e.target.dataset.category;
-
-
-
-
 
         // 9. Función para agregar efecto de escritura
         function addTypingEffect() {
@@ -2418,6 +2728,10 @@
         CLOSE_RESOURCE_MODAL.addEventListener('click', () => {
             RESOURCE_MODAL.classList.add('hidden');
         });
+
+        // Hacer funciones globalmente accesibles para onclick
+        window.playMissionAudio = playMissionAudio;
+        window.stopAllMissionAudio = stopAllMissionAudio;
 
         // 14. Inicializar la aplicación al cargar la ventana
         window.onload = () => {
