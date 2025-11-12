@@ -405,22 +405,196 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mejoras responsivas */
+        /* Mejoras responsivas completas */
+        @media (max-width: 1024px) {
+            .text-4xl {
+                font-size: 2.5rem;
+            }
+            .grid-responsive-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-responsive-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             #app-container {
                 padding: 0.5rem;
+                border-width: 2px;
             }
+            
+            header {
+                padding: 0.75rem;
+            }
+            
             .nav-link {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
                 margin: 0 0.1rem;
-                padding: 0.3rem 0.5rem;
+                padding: 0.3rem 0.4rem;
             }
+            
             .text-4xl {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
             }
+            
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .text-xl {
+                font-size: 1.1rem;
+            }
+            
             .grid {
                 grid-template-columns: 1fr;
+                gap: 0.75rem;
             }
+            
+            .p-8 {
+                padding: 1rem;
+            }
+            
+            .p-6 {
+                padding: 0.75rem;
+            }
+            
+            .p-4 {
+                padding: 0.5rem;
+            }
+            
+            .mb-6 {
+                margin-bottom: 1rem;
+            }
+            
+            .space-y-6 > * + * {
+                margin-top: 1rem;
+            }
+            
+            .inventory-tab {
+                font-size: 0.7rem;
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .data-card {
+                padding: 0.75rem;
+            }
+            
+            .border-l-4 {
+                padding-left: 0.5rem;
+            }
+            
+            /* Modales móviles */
+            .modal-container {
+                width: 95% !important;
+                max-width: none !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            
+            #app-container {
+                padding: 0.25rem;
+                border-width: 1px;
+            }
+            
+            header {
+                padding: 0.5rem;
+            }
+            
+            .nav-link {
+                font-size: 0.6rem;
+                margin: 0;
+                padding: 0.25rem 0.3rem;
+                display: block;
+                text-align: center;
+            }
+            
+            #top-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.5rem;
+                margin: 0.5rem 0;
+            }
+            
+            .text-3xl {
+                font-size: 1.3rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.1rem;
+            }
+            
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .inventory-tab {
+                font-size: 0.6rem;
+                padding: 0.4rem 0.5rem;
+            }
+            
+            .flex.justify-between {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .terminal-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .space-x-4 > * + * {
+                margin-left: 0;
+            }
+            
+            /* ASCII Art responsive */
+            pre {
+                font-size: 0.5rem;
+                overflow-x: auto;
+            }
+            
+            /* Tables móvil */
+            table {
+                font-size: 0.7rem;
+            }
+            
+            th, td {
+                padding: 0.25rem;
+            }
+        }
+
+        /* Mejorar scroll horizontal en tablas */
+        .overflow-x-auto {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar-thumb {
+            background: var(--terminal-color);
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -430,7 +604,7 @@
     <div id="boot-screen" class="absolute inset-0 flex flex-col items-center justify-center bg-black transition-opacity duration-1000">
         <!-- ASCII Art MOTHERSHIP -->
         <div class="text-center mb-6">
-            <pre class="text-lg md:text-xl text-terminal-color flicker font-mono leading-tight">
+            <pre class="text-xs sm:text-sm md:text-lg lg:text-xl text-terminal-color flicker font-mono leading-tight overflow-x-auto">
   __  __  ____ _______ _    _ ______ _____   _____ _    _ _____ _____  
  |  \/  |/ __ \__   __| |  | |  ____|  __ \ / ____| |  | |_   _|  __ \ 
  | \  / | |  | | | |  | |__| | |__  | |__) | (___ | |__| | | | | |__) |
@@ -520,28 +694,28 @@
     <!-- Contenedor Principal de la SPA (Inicialmente oculto) -->
     <div id="app-container" class="hidden relative flex flex-col">
         <!-- Encabezado y Navegación Horizontal (Mothership Command System) -->
-        <header class="p-4 border-b border-dark-border flex-shrink-0">
-            <h1 class="text-2xl text-white mb-2">Mothership Command System</h1>
-            <nav id="top-nav" class="text-sm">
+        <header class="p-2 sm:p-3 md:p-4 border-b border-dark-border flex-shrink-0">
+            <h1 class="text-lg sm:text-xl md:text-2xl text-white mb-2">Mothership Command System</h1>
+            <nav id="top-nav" class="text-xs sm:text-sm flex flex-wrap gap-1">
                 <!-- Los botones de navegación ahora son enlaces con corchetes -->
-                <a class="nav-link active" data-screen="landing">[ MANDATOS ]</a>
-                <a class="nav-link" data-screen="contratos">[ CONTRATOS ]</a>
-                <a class="nav-link" data-screen="inventario">[ INVENTARIO ]</a>
-                <a class="nav-link" data-screen="database">[ BASE DE DATOS ]</a>
-                <a class="nav-link" data-screen="terminal">[ TERMINAL ACCESS ]</a>
+                <a class="nav-link active" data-screen="landing">[ <span class="hidden sm:inline">MANDATOS</span><span class="sm:hidden">MAND</span> ]</a>
+                <a class="nav-link" data-screen="contratos">[ <span class="hidden sm:inline">CONTRATOS</span><span class="sm:hidden">CONT</span> ]</a>
+                <a class="nav-link" data-screen="inventario">[ <span class="hidden sm:inline">INVENTARIO</span><span class="sm:hidden">INV</span> ]</a>
+                <a class="nav-link" data-screen="database">[ <span class="hidden sm:inline">BASE DE DATOS</span><span class="sm:hidden">DATA</span> ]</a>
+                <a class="nav-link" data-screen="terminal">[ <span class="hidden sm:inline">TERMINAL ACCESS</span><span class="sm:hidden">TERM</span> ]</a>
             </nav>
         </header>
 
         <!-- Área de Contenido Principal -->
-        <main id="content-area" class="flex-grow overflow-y-auto p-4">
+        <main id="content-area" class="flex-grow overflow-y-auto p-2 sm:p-3 md:p-4">
             <!-- PÁGINA 1: LANDING PAGE -->
             <section id="landing" class="screen">
                 <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// MOTHERSHIP COMMAND: UNIDAD M-05 INTRANET</p>
-                <h2 class="text-4xl my-4 text-terminal-accent glow">MÓDULO DE RECLUTAMIENTO ACTIVO</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl my-2 sm:my-3 md:my-4 text-terminal-accent glow">MÓDULO DE RECLUTAMIENTO ACTIVO</h2>
                 
                 <!-- Panel Principal de Bienvenida -->
-                <div class="p-6 border-2 border-terminal-color bg-black shadow-lg shadow-terminal-color/20 mb-6">
-                    <p class="text-xl mb-4 text-terminal-color flicker">>> BIENVENIDO, TRABAJADOR. (FECHA ESTELAR: 2247.11.09)</p>
+                <div class="p-3 sm:p-4 md:p-6 border border-terminal-color sm:border-2 bg-black shadow-lg shadow-terminal-color/20 mb-4 sm:mb-6">
+                    <p class="text-sm sm:text-lg md:text-xl mb-2 sm:mb-4 text-terminal-color flicker">>> BIENVENIDO, TRABAJADOR. (FECHA ESTELAR: 2247.11.09)</p>
                     <div class="space-y-4 text-sm">
                         <p class="text-terminal-color">
                             <span class="text-terminal-accent font-bold">MOTHERSHIP CORPORATION</span> - La empresa líder en exploración del espacio profundo y desarrollo de fronteras coloniales. Desde 2157, hemos estado construyendo mundos mejores a través de la innovación, la determinación y el sacrificio de valientes trabajadores como usted.
@@ -557,17 +731,17 @@
                 </div>
 
                 <!-- Panel de Estadísticas Corporativas -->
-                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">847</p>
+                        <p class="text-xl sm:text-2xl text-terminal-accent font-bold">847</p>
                         <p class="text-xs text-terminal-color">Mundos Explorados</p>
                     </div>
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">15.6M</p>
+                        <p class="text-xl sm:text-2xl text-terminal-accent font-bold">15.6M</p>
                         <p class="text-xs text-terminal-color">Trabajadores Activos</p>
                     </div>
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">99.7%</p>
+                        <p class="text-xl sm:text-2xl text-terminal-accent font-bold">99.7%</p>
                         <p class="text-xs text-terminal-color">Tasa de Satisfacción</p>
                     </div>
                 </div>
@@ -596,7 +770,7 @@
             <!-- PÁGINA 2: CONTRATOS -->
             <section id="contratos" class="screen hidden">
                 <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// CONTRATOS ACTIVOS</p>
-                <h2 class="text-4xl my-4 text-terminal-accent">LISTADO DE ASIGNACIONES (Q3-2247)</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl my-2 sm:my-3 md:my-4 text-terminal-accent">LISTADO DE ASIGNACIONES (Q3-2247)</h2>
                 <div id="contract-list" class="space-y-6">
                     <!-- Los contratos se cargan dinámicamente desde CONTRACT_DATA -->
                 </div>
@@ -605,7 +779,7 @@
             <!-- PÁGINA 3: ARSENAL Y EQUIPAMIENTO -->
             <section id="inventario" class="screen hidden">
                 <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// ARSENAL CORPORATIVO - NIVEL DE ACCESO: AUTORIZADO</p>
-                <h2 class="text-4xl my-4 text-terminal-accent glow">CATÁLOGO DE EQUIPAMIENTO ESTÁNDAR</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl my-2 sm:my-3 md:my-4 text-terminal-accent glow">CATÁLOGO DE EQUIPAMIENTO ESTÁNDAR</h2>
                 
                 <!-- Aviso de Seguridad -->
                 <div class="mb-6 p-4 border border-error-color bg-black/50">
@@ -617,35 +791,35 @@
                 </div>
 
                 <!-- Stats de Arsenal -->
-                <div class="grid md:grid-cols-4 gap-4 mb-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">47</p>
+                        <p class="text-lg sm:text-xl md:text-2xl text-terminal-accent font-bold">47</p>
                         <p class="text-xs text-terminal-color">Armas Catalogadas</p>
                     </div>
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">23</p>
+                        <p class="text-lg sm:text-xl md:text-2xl text-terminal-accent font-bold">23</p>
                         <p class="text-xs text-terminal-color">Tipos de Armadura</p>
                     </div>
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">156</p>
+                        <p class="text-lg sm:text-xl md:text-2xl text-terminal-accent font-bold">156</p>
                         <p class="text-xs text-terminal-color">Items Especializados</p>
                     </div>
                     <div class="data-card text-center">
-                        <p class="text-2xl text-terminal-accent font-bold">99.2%</p>
+                        <p class="text-lg sm:text-xl md:text-2xl text-terminal-accent font-bold">99.2%</p>
                         <p class="text-xs text-terminal-color">Disponibilidad</p>
                     </div>
                 </div>
 
                 <!-- Pestañas de navegación -->
-                <div class="flex mb-6 border-b border-dark-border">
-                    <button onclick="showInventoryTab('weapons')" id="weapons-tab" class="inventory-tab px-6 py-3 text-error-color border-b-2 border-error-color font-bold">
-                        🔫 ARMAMENTO
+                <div class="flex flex-col sm:flex-row mb-4 sm:mb-6 border-b border-dark-border overflow-x-auto">
+                    <button onclick="showInventoryTab('weapons')" id="weapons-tab" class="inventory-tab px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-error-color border-b-2 border-error-color font-bold text-xs sm:text-sm flex-shrink-0">
+                        🔫 <span class="hidden sm:inline">ARMAMENTO</span><span class="sm:hidden">ARM</span>
                     </button>
-                    <button onclick="showInventoryTab('armor')" id="armor-tab" class="inventory-tab px-6 py-3 text-gray-400 border-b-2 border-transparent hover:text-terminal-accent">
-                        🛡️ PROTECCIÓN
+                    <button onclick="showInventoryTab('armor')" id="armor-tab" class="inventory-tab px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-gray-400 border-b-2 border-transparent hover:text-terminal-accent text-xs sm:text-sm flex-shrink-0">
+                        🛡️ <span class="hidden sm:inline">PROTECCIÓN</span><span class="sm:hidden">PROT</span>
                     </button>
-                    <button onclick="showInventoryTab('items')" id="items-tab" class="inventory-tab px-6 py-3 text-gray-400 border-b-2 border-transparent hover:text-terminal-color">
-                        ⚙️ EQUIPAMIENTO
+                    <button onclick="showInventoryTab('items')" id="items-tab" class="inventory-tab px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-gray-400 border-b-2 border-transparent hover:text-terminal-color text-xs sm:text-sm flex-shrink-0">
+                        ⚙️ <span class="hidden sm:inline">EQUIPAMIENTO</span><span class="sm:hidden">EQUIP</span>
                     </button>
                 </div>
 
@@ -787,7 +961,7 @@
             <!-- PÁGINA 4: BASE DE DATOS -->
             <section id="database" class="screen hidden">
                 <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// PROTOCOLOS CORPORATIVOS - ACCESO NIVEL 2</p>
-                <h2 class="text-4xl my-4 text-terminal-accent glow">RECURSOS DE SUPERVIVENCIA Y REFERENCIA</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl my-2 sm:my-3 md:my-4 text-terminal-accent glow">RECURSOS DE SUPERVIVENCIA Y REFERENCIA</h2>
                 
                 <!-- Aviso de Seguridad -->
                 <div class="mb-6 p-3 border border-terminal-accent bg-black/50">
@@ -798,11 +972,11 @@
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <!-- Tarjeta 1: Guía de Supervivencia -->
                     <a href="assets/Mothership Player's Survival Guide.pdf" target="_blank" class="data-card block hover:bg-green-900/20 cursor-pointer">
                         <div class="flex items-start justify-between mb-3">
-                            <div class="text-xl text-terminal-color font-bold">Guía de Supervivencia</div>
+                            <div class="text-lg sm:text-xl text-terminal-color font-bold">Guía de Supervivencia</div>
                             <span class="text-xs text-terminal-accent border border-terminal-accent px-2 py-1">PDF</span>
                         </div>
                         <p class="text-sm text-terminal-color mb-2">
@@ -928,9 +1102,9 @@
             <!-- PÁGINA 5: TERMINAL RESTRINGIDO -->
             <section id="terminal" class="screen hidden">
                 <p class="text-sm flicker border-b border-dark-border pb-2 mb-4">// ACCESO DE NIVEL 4 - CLASIFICADO</p>
-                <h2 class="text-4xl my-4 text-terminal-accent danger-text">TERMINAL DE INTEL CRÍTICO</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl my-2 sm:my-3 md:my-4 text-terminal-accent danger-text">TERMINAL DE INTEL CRÍTICO</h2>
 
-                <div id="login-form" class="max-w-lg mx-auto p-8 border-2 border-terminal-color shadow-lg shadow-terminal-color/30 bg-black/80">
+                <div id="login-form" class="max-w-lg mx-auto p-4 sm:p-6 md:p-8 border border-terminal-color sm:border-2 shadow-lg shadow-terminal-color/30 bg-black/80">
                     <!-- Header del Terminal -->
                     <div class="text-center mb-6">
                         <p class="text-lg text-terminal-color font-bold mb-2">╔══════ MOTHERSHIP SECURE ACCESS ══════╗</p>
@@ -1187,38 +1361,38 @@
     </div>
 
     <!-- MODAL DE CONTRATO (Superposición) -->
-    <div id="contract-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+    <div id="contract-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2">
         <!-- Contenedor del Modal con borde ÁMBAR -->
-        <div class="p-8 w-11/12 md:w-2/3 max-h-[90vh] overflow-y-auto bg-black border-4 border-terminal-accent shadow-xl shadow-terminal-accent/50">
-            <h3 id="modal-title" class="text-3xl mb-4 text-terminal-accent border-b border-dark-border pb-2"></h3>
-            <p id="modal-details" class="mb-6 text-sm"></p>
+        <div class="p-4 sm:p-6 md:p-8 w-full max-w-lg sm:max-w-2xl md:max-w-4xl lg:w-2/3 max-h-[90vh] overflow-y-auto bg-black border-2 sm:border-4 border-terminal-accent shadow-xl shadow-terminal-accent/50">
+            <h3 id="modal-title" class="text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-4 text-terminal-accent border-b border-dark-border pb-2"></h3>
+            <p id="modal-details" class="mb-4 sm:mb-6 text-xs sm:text-sm"></p>
 
             <!-- Revelación de Contraseña con borde ÁMBAR -->
-            <div id="password-reveal" class="hidden p-4 bg-black border border-terminal-accent mb-6">
-                <p class="text-lg text-terminal-color">CONTRATO ACEPTADO. SU CÓDIGO DE ACCESO A TERMINAL ES:</p>
+            <div id="password-reveal" class="hidden p-3 sm:p-4 bg-black border border-terminal-accent mb-4 sm:mb-6">
+                <p class="text-sm sm:text-base md:text-lg text-terminal-color">CONTRATO ACEPTADO. SU CÓDIGO DE ACCESO A TERMINAL ES:</p>
                 <!-- Clave en color ÁMBAR brillante -->
-                <p id="contract-password" class="text-5xl text-terminal-accent font-bold my-4 flicker">SAMSA-6</p>
-                <p class="text-sm text-terminal-color">Use este código en el portal [ TERMINAL ACCESS ].</p>
+                <p id="contract-password" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-terminal-accent font-bold my-2 sm:my-4 flicker text-center">SAMSA-6</p>
+                <p class="text-xs sm:text-sm text-terminal-color">Use este código en el portal [ TERMINAL ACCESS ].</p>
             </div>
 
-            <div class="flex justify-between space-x-4 pt-4 border-t border-dark-border">
+            <div class="flex flex-col sm:flex-row justify-between gap-2 sm:gap-4 pt-4 border-t border-dark-border">
                 <!-- Se agregó la clase btn-reject para el botón de rechazar -->
-                <button id="reject-contract-btn" class="terminal-btn btn-reject">RECHAZAR / DECLINE</button>
-                <button id="accept-contract-btn" class="terminal-btn">ACEPTAR / ACCEPT</button>
+                <button id="reject-contract-btn" class="terminal-btn btn-reject w-full sm:w-auto">RECHAZAR / DECLINE</button>
+                <button id="accept-contract-btn" class="terminal-btn w-full sm:w-auto">ACEPTAR / ACCEPT</button>
             </div>
         </div>
     </div>
 
     <!-- MODAL DE RECURSOS (Base de Datos) -->
-    <div id="resource-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-        <div class="p-8 w-11/12 md:w-3/4 max-h-[90vh] overflow-y-auto bg-black border-4 border-terminal-color shadow-xl shadow-terminal-color/50">
-            <div class="flex justify-between items-center mb-6 border-b border-dark-border pb-4">
-                <h3 id="resource-modal-title" class="text-2xl text-terminal-accent"></h3>
-                <button id="close-resource-modal" class="text-terminal-color hover:text-terminal-accent text-2xl">✕</button>
+    <div id="resource-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2">
+        <div class="p-4 sm:p-6 md:p-8 w-full max-w-lg sm:max-w-2xl md:max-w-4xl lg:w-3/4 max-h-[90vh] overflow-y-auto bg-black border-2 sm:border-4 border-terminal-color shadow-xl shadow-terminal-color/50">
+            <div class="flex justify-between items-center mb-4 sm:mb-6 border-b border-dark-border pb-2 sm:pb-4">
+                <h3 id="resource-modal-title" class="text-lg sm:text-xl md:text-2xl text-terminal-accent"></h3>
+                <button id="close-resource-modal" class="text-terminal-color hover:text-terminal-accent text-xl sm:text-2xl">✕</button>
             </div>
-            <div id="resource-modal-content" class="text-sm text-terminal-color"></div>
-            <div class="mt-6 pt-4 border-t border-dark-border text-center">
-                <button id="download-resource-btn" class="terminal-btn">DESCARGAR / ACCEDER</button>
+            <div id="resource-modal-content" class="text-xs sm:text-sm text-terminal-color"></div>
+            <div class="mt-4 sm:mt-6 pt-4 border-t border-dark-border text-center">
+                <button id="download-resource-btn" class="terminal-btn w-full sm:w-auto">DESCARGAR / ACCEDER</button>
             </div>
         </div>
     </div>
